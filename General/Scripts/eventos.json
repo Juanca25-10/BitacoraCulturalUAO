@@ -1,0 +1,121 @@
+{
+  "universidad": "Universidad Autónoma de Occidente",
+  "ciudad": "Cali, Colombia",
+  "eventos": [
+    {
+      "id": "integracion-biodiversidad",
+      "nombre": "Integración de la biodiversidad en la planificación urbana",
+      "fecha": "2025-09-29",
+      "hora_inicio": "10:00",
+      "hora_fin": "10:45",
+      "lugar": "Auditorio principal, Banco de la República (Cali)",
+      "tipo": "Académico - Semana de la Biodiversidad",
+      "imagen_path": "../../General/Recursos/imagenes/Obra teatro.jpg"
+    },
+    {
+      "id": "foro-cali-biodiverciudad",
+      "nombre": "Foro Cali Biodiverciudad: Nuevo paradigma de la planeación territorial y del desarrollo",
+      "fecha": "2025-09-29",
+      "hora_inicio": "10:45",
+      "hora_fin": "11:30",
+      "lugar": "Auditorio principal, Banco de la República (Cali)",
+      "tipo": "Académico - Semana de la Biodiversidad",
+      "imagen_path": "../../General/Recursos/imagenes/Obra teatro.jpg"
+    },
+    {
+      "id": "interaccion-uao-territorio",
+      "nombre": "Interacción de la UAO con el territorio en la protección de la biodiversidad",
+      "fecha": "2025-09-30",
+      "hora_inicio": "14:00",
+      "hora_fin": "16:00",
+      "lugar": "Teatrino del Teatro Municipal Enrique Buenaventura (Cali)",
+      "tipo": "Académico - Semana de la Biodiversidad",
+      "imagen_path": "../../General/Recursos/imagenes/Obra teatro.jpg"
+    },
+    {
+      "id": "batallas-freestyle",
+      "nombre": "Batallas de Freestyle",
+      "fecha": "2025-10-05",
+      "hora_inicio": "17:30",
+      "hora_fin": "19:30",
+      "lugar": "Salón de Actividades, Bienestar Universitario UAO",
+      "tipo": "Cultural - Música",
+      "imagen_path": "../../General/Recursos/imagenes/Obra teatro.jpg"
+    },
+    {
+      "id": "cafe-uao",
+      "nombre": "Café UAO",
+      "fecha": "2025-10-12",
+      "hora_inicio": "18:00",
+      "hora_fin": "20:00",
+      "lugar": "Plazoleta Central, UAO",
+      "tipo": "Cultural - Encuentro artístico",
+      "imagen_path": "../../General/Recursos/imagenes/Obra teatro.jpg"
+    },
+    {
+      "id": "obra-teatro-estudiantil",
+      "nombre": "Obra de teatro estudiantil",
+      "fecha": "2025-10-18",
+      "hora_inicio": "16:30",
+      "hora_fin": "18:30",
+      "lugar": "Centro Cultural y Deportivo UAO",
+      "tipo": "Cultural - Artes escénicas",
+      "imagen_path": "../../General/Recursos/imagenes/Obra teatro.jpg"
+    },
+    {
+      "id": "improvisacion-teatral",
+      "nombre": "Improvisación Teatral",
+      "frecuencia": "Semanal",
+      "dia": "Lunes",
+      "hora_inicio": "16:00",
+      "hora_fin": "19:00",
+      "lugar": "Salón de Danzas, Centro Cultural y Deportivo UAO",
+      "tipo": "Taller formativo",
+      "imagen_path": "../../General/Recursos/imagenes/Obra teatro.jpg"
+    },
+    {
+      "id": "colectivo-fotografico",
+      "nombre": "Colectivo Fotográfico",
+      "frecuencia": "Semanal",
+      "dia": "Miércoles",
+      "hora_inicio": "17:00",
+      "hora_fin": "19:00",
+      "lugar": "Laboratorio de Lúdica y Creatividad, Sótano 2 UAO",
+      "tipo": "Taller formativo",
+      "imagen_path": "../../General/Recursos/imagenes/Obra teatro.jpg"
+    },
+    {
+      "id": "bailes-urbanos",
+      "nombre": "Bailes Urbanos (Iniciación)",
+      "frecuencia": "Semanal",
+      "dia": "Martes y Jueves",
+      "hora_inicio": "14:00",
+      "hora_fin": "16:00",
+      "lugar": "Salón de Danzas, Centro Cultural y Deportivo UAO",
+      "tipo": "Taller formativo",
+      "imagen_path": "../../General/Recursos/imagenes/Obra teatro.jpg"
+    },
+    {
+      "id": "ensamble-coral",
+      "nombre": "Ensamble Coral",
+      "frecuencia": "Semanal",
+      "dia": "Miércoles",
+      "hora_inicio": "17:30",
+      "hora_fin": "19:30",
+      "lugar": "Salón de Actividades, Bienestar Universitario UAO",
+      "tipo": "Taller formativo",
+      "imagen_path": "../../General/Recursos/imagenes/Obra teatro.jpg"
+    },
+    {
+      "id": "orquesta-salsa",
+      "nombre": "Orquesta de Salsa",
+      "frecuencia": "Semanal",
+      "dia": "Viernes",
+      "hora_inicio": "18:00",
+      "hora_fin": "21:30",
+      "lugar": "Salón Acústico, Bienestar Universitario UAO",
+      "tipo": "Taller formativo",
+      "imagen_path": "../../General/Recursos/imagenes/Obra teatro.jpg"
+    }
+  ]
+}

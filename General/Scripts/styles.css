@@ -1,0 +1,309 @@
+/* Fuente general */
+body {
+    font-family: "Poppins", sans-serif;
+    line-height: 1.6;
+    color: #333;
+    /* Aplicación de la paleta: Fondo general a color crema/hueso */
+    background-color: #efdfc5; 
+    margin: 0;
+}
+
+/* Contenedor */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Encabezado y Navegación (SIN CAMBIOS) */
+header {
+    background: #df2531;
+    color: #fff;
+    padding: 1rem 0;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+.logo-img {
+    /* CORRECCIÓN: Ajustamos la altura para que no sea gigante */
+    height: 70px; /* Prueba con 40px o 50px */
+    width: auto;
+    display: block; 
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+    .nav-links a {
+        color: #efdfc5;
+        text-decoration: none;
+        font-weight: 500;
+    }
+
+/* Botones (SIN CAMBIOS) */
+/* Botones */
+.btn-primary {
+    /* Aplicación de la paleta: Botón primario al negro */
+    background: #000000;
+    color: #efdfc5;
+    border: none;
+    padding: 0.4rem 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    
+    /* CAMBIO CLAVE: Separa el botón del elemento anterior (nav-links) */
+    margin-left: 2rem; 
+}
+
+.btn-secondary {
+    background: transparent;
+    border: 2px solid #df2531;
+    color: #df2531;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+/* HERO IMAGE (SECCIÓN SUPERIOR) */
+.hero-image {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                /* RUTA CORREGIDA: Sube dos niveles, luego baja a la carpeta de imagen */
+                url('../../General/Recursos/imagenes/CafeUAO_Banner.jpg'); 
+    background-size: cover;
+    background-position: center;
+    min-height: 80vh;
+    padding: 0;
+}
+
+.hero-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 80vh;
+    gap: 1.5rem;
+    padding: 2rem 0;
+}
+
+.hero-text h1, .hero-text p {
+    color: #f7f1e7;
+    margin: 0.5rem 0;
+}
+
+.hero-text h1 span {
+    color: #df2531;
+}
+
+.hero-gallery, .img-box {
+    display: none;
+}
+
+/* NUEVO ESTILO: Para la imagen de decoración del Arco */
+.arco-decorativo {
+    /* Ajusta el tamaño para que no sea gigante */
+    width: 150px; 
+    height: auto;
+    /* Centramos la imagen */
+    margin: 0 auto 1.5rem auto; 
+    display: block;
+    /* Hacemos la imagen blanca para que contraste con el fondo oscuro del hero */
+    filter: brightness(0) invert(1);
+    opacity: 0.8; /* Si quieres que se vea un poco transparente */
+}
+
+/* CONTENIDO PRINCIPAL (RESTABLECIDO A FLUJO VERTICAL) */
+.main-content {
+    /* ELIMINAMOS GRID Y VOLVEMOS AL FLUJO NORMAL */
+    display: block; 
+    padding: 3rem 0;
+}
+
+.content-slider, .content-sidebar, .intermedia {
+    /* Aseguramos que los nuevos contenedores ocupen su espacio sin Grid */
+    margin-bottom: 2rem;
+}
+
+.intermedia {
+    padding: 2rem;
+    border-radius: 10px;
+    background: #f7f1e7;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* SECCIONES: SLIDER Y TALLERES */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+/* ESTILO DEL SLIDER (Próximos Eventos) */
+.content-slider {
+    overflow: hidden; 
+}
+
+/* Contenedor de Eventos (Ahora es el Slider) */
+.cards, .stories-grid, .stories-list {
+    /* Reseteamos el display grid de la versión anterior */
+    display: block; 
+}
+
+/* Contenedor para el Slider (scroll horizontal) */
+.carousel-container {
+    display: flex;
+    overflow-x: scroll; 
+    scroll-snap-type: x mandatory;
+    gap: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+.card {
+    /* Hacemos las tarjetas rígidas para el scroll */
+    flex: 0 0 300px; 
+    scroll-snap-align: start;
+    background: #f7f1e7; 
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* ESTILO DE TALLERES (VOLVIENDO A GRID ADAPTABLE) */
+.content-sidebar {
+    padding: 0;
+}
+
+.stories-list {
+    /* Volvemos a un GRID de tarjetas adaptables, como estaba originalmente */
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.story {
+    /* La tarjeta de taller */
+    background: #f7f1e7;
+    padding: 1rem; 
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.story h3 {
+    margin-top: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.story p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Estilos de Enlaces, Placeholders y Estados (Mantenidos) */
+.card a, .story a {
+    color: #000000;
+    text-decoration: none;
+}
+
+.card a h3, .card a p, .story a h3, .story a p {
+    color: inherit;
+}
+
+.img-placeholder {
+    background: #6d6d6d;
+    height: 150px;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    position: relative; 
+}
+
+/* ------------------------------------- */
+/* TESTIMONIOS (CUADRÍCULA - SIN CAMBIOS) */
+/* ------------------------------------- */
+.testimonios {
+    background: #efdfc5;
+    padding: 3rem 0;
+}
+
+.testimonial-cards {
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    margin-top: 2rem;
+}
+
+.testimonial {
+    background: #f7f1e7;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    background: #bbb;
+    border-radius: 50%;
+    margin-right: 1rem;
+}
+
+blockquote {
+    font-style: italic;
+    margin: 0;
+}
+
+/* Footer (SIN CAMBIOS) */
+footer {
+    background: #df2531;
+    color: #efdfc5;
+    text-align: center;
+    padding: 1rem 0;
+    margin-top: 2rem;
+}
+
+/* Estilos para las etiquetas de estado del evento (DINÁMICOS - SIN CAMBIOS) */
+.estado-evento {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    padding: 4px 10px;
+    border-radius: 5px;
+    color: white;
+    font-size: 0.8rem;
+    font-weight: bold;
+    z-index: 2;
+}
+
+.estado-evento.en-curso {
+    background-color: #4CAF50;
+}
+
+.estado-evento.proximamente {
+    background-color: #FF9800;
+}
+
+.estado-evento.finalizado {
+    background-color: #757575;
+}
