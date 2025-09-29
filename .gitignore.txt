@@ -1,0 +1,9 @@
+# Archivos y carpetas del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Archivos de configuración de editores comunes (VS Code)
+.vscode/
+
+# Ignorar la carpeta de librerías (si la usas después)
+/node_modules
