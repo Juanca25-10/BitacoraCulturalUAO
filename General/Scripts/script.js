@@ -1,5 +1,4 @@
-// script.js (Versión Final con Inyección de Imágenes)
-
+// script.js (Versión Final con Inyección de Imágenes y enlaces a subpáginas)
 document.addEventListener("DOMContentLoaded", () => {
     fetch("eventos.json")
         .then(response => {
@@ -90,8 +89,27 @@ document.addEventListener("DOMContentLoaded", () => {
                 const card = document.createElement("article");
                 card.classList.add("card");
                 
-                // Usamos el ID como parámetro de URL, más limpio que un archivo por evento
-                const url = `evento-detalle.html?id=${evento.id}`; 
+                // === Mapeo NO invasivo a subpáginas (si coincide, usamos la subpágina estática.
+                // Si no coincide, mantenemos el comportamiento original de evento-detalle.html?id=slug ===
+                const slug = evento.id;
+
+                // Por seguridad comprobamos con startsWith/includes (más tolerante a variaciones)
+                let url = `evento-detalle.html?id=${slug}`; // fallback original
+
+                if (slug.startsWith("integracion-de-la-biodiversidad")) {
+                    url = "integracion-biodiversidad.html";
+                } else if (slug.includes("biodiverciudad") || slug.startsWith("foro-cali-biodiverciudad")) {
+                    url = "foro-cali-biodiverciudad.html";
+                } else if (slug.startsWith("interaccion-de-la-uao") || slug.startsWith("interaccion-uao")) {
+                    url = "interaccion-uao-biodiversidad.html";
+                } else if (slug.includes("batallas") && slug.includes("freestyle") || slug.startsWith("batallas-de-freestyle")) {
+                    url = "batallas-freestyle.html";
+                } else if (slug.includes("cafe-uao") || slug.includes("cafe-uao") || slug.includes("cafe")) {
+                    url = "cafe-uao.html";
+                } else if (slug.includes("obra") && slug.includes("teatro") || slug.startsWith("obra-de-teatro")) {
+                    url = "obra-teatro.html";
+                }
+                // === fin mapeo ===
                 
                 const horaDisplay = `${formatHora12H(evento.hora_inicio)} - ${formatHora12H(evento.hora_fin)}`;
                 const fechaDisplay = evento.fecha.split('-').reverse().join('-');
