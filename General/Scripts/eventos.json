@@ -26,7 +26,7 @@
       "hora_fin": "11:30",
       "lugar": "Auditorio principal, Banco de la República (Cali)",
       "tipo": "Académico - Semana de la Biodiversidad",
-      "imagen_path": "../../General/Recursos/imagenes/foro_cali_biodiverciudad.jpg",
+      "imagen_path": "../../General/Recursos/imagenes/Integracion biodiversidad.jpg",
    
       "descripcion_larga": [
         "Este foro reúne a académicos, líderes comunitarios y representantes del sector público para discutir el concepto de 'Biodiverciudad', que busca armonizar el crecimiento urbano con la conservación de la naturaleza.",
@@ -58,7 +58,7 @@
       "hora_fin": "19:30",
       "lugar": "Salón de Actividades, Bienestar Universitario UAO",
       "tipo": "Cultural - Música",
-      "imagen_path": "../../General/Recursos/imagenes/batallas_freestyle.jpg",
+      "imagen_path": "../../General/Recursos/imagenes/batallas_freestyle.webp",
 
       "descripcion_larga": [
         "¡Demuestra tu ingenio y rapidez mental! El evento reúne a los mejores MCs de la universidad para una competencia de rimas improvisadas, llena de energía, ritmo y cultura urbana."
@@ -73,7 +73,7 @@
       "hora_fin": "20:00",
       "lugar": "Plazoleta Central, UAO",
       "tipo": "Cultural - Encuentro artístico",
-      "imagen_path": "../../General/Recursos/imagenes/cafe_uao.jpg",
+      "imagen_path": "../../General/Recursos/imagenes/cafe_uao.png",
 
       "descripcion_larga": [
         "Un espacio relajado y artístico donde los estudiantes pueden compartir sus talentos en música, poesía y *stand-up comedy* mientras disfrutan de un buen café. Abierto a la comunidad UAO."
@@ -88,7 +88,7 @@
       "hora_fin": "18:30",
       "lugar": "Centro Cultural y Deportivo UAO",
       "tipo": "Cultural - Artes escénicas",
-      "imagen_path": "../../General/Recursos/imagenes/Obra teatro.jpg",
+      "imagen_path": "../../General/Recursos/imagenes/obra-teatro-estudiantil.jpg",
 
       "descripcion_larga": [
         "Presentación de una pieza teatral original creada e interpretada por el grupo de teatro de Bienestar Universitario. Una obra que explora temas de identidad y vida universitaria con humor y drama."
