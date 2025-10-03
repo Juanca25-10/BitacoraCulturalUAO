@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title id="detalle-titulo-pagina">Cargando Detalle del Evento...</title> 
+    
+    <link rel="stylesheet" href="subpaginasStyle.css" /> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="container-nav">
+                <div class="logo">
+                    <a href="index.html"><img src="../../General/Recursos/imagenes/logoUAO_WebSite.png" alt="Logo Eventos UAO" class="logo-img"></a> 
+                </div>
+                <ul class="menu">
+                    <li><a href="index.html#proximos-eventos">Próximos eventos</a></li>
+                    <li><a href="index.html#talleres">Talleres</a></li> <li><a href="index.html#testimonios">Testimonios</a></li> </ul>
+                <a href="login.html" class="btn-ingresar">Ingresar</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="evento-detalle">
+            
+            <div id="detalle-imagen" class="imagen-evento-detalle">
+                <span id="detalle-estado" class="estado-evento"></span>
+            </div>
+
+            <div class="informacion-evento">
+                <h1 id="detalle-nombre">Cargando Nombre del Evento...</h1>
+                
+                <p class="fecha-hora"><strong>Fecha y hora: </strong><span id="meta-fechahora">...</span></p>
+                <p class="lugar"><strong>Lugar: </strong><span id="meta-lugar">...</span></p>
+                
+                <article>
+                    <h2>Descripción del evento</h2>
+                    <div id="detalle-descripcion">
+                        <p>...</p> 
+                    </div>
+                </article>
+                
+                <a href="#" id="detalle-cta" class="btn-ingresar" style="margin-top: 20px;">Inscríbete Aquí</a>
+
+                <a href="index.html" class="btn-secundario" style="margin-top: 20px; display: block;">← Volver al inicio</a>
+
+            </div>
+        </section>
+    </main>
+
+    <footer> 
+        <div class="container-footer">
+            <div class="footer-info">
+                <p>© 2025 Universidad Autónoma de Occidente - Todos los derechos reservados</p>
+                <p>Av. Simón Bolívar Calle 22 No 49-51, Cali, Colombia</p>
+                <p>Teléfono: +57 (2) 555 1234</p>
+            </div>
+            <div class="footer-links">
+                <a href="politica-privacidad.html">Política de privacidad</a>
+                <a href="terminos.html">Términos y condiciones</a>
+                <a href="contacto.html">Contacto</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="detalle.js"></script>
+</body>
+</html>

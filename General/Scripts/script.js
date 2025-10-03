@@ -1,4 +1,3 @@
-// script.js (Versión Final con Inyección de Imágenes y enlaces a subpáginas)
 document.addEventListener("DOMContentLoaded", () => {
     fetch("eventos.json")
         .then(response => {
@@ -24,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Función para determinar el estado de un evento
             const getEstadoEvento = (evento) => {
                 const ahora = new Date(); // Fecha y hora actuales
-                const [anio, mes, dia] = evento.fecha ? evento.fecha.split('-').map(Number) : [0,0,0]; // Solo aplica a eventos con fecha
+                const [anio, mes, dia] = evento.fecha ? evento.fecha.split('-').map(Number) : [0,0,0]; 
                 
                 if (!evento.fecha) {
                     return { texto: "En curso", clase: "en-curso" }; // Talleres siempre en curso
@@ -89,37 +88,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 const card = document.createElement("article");
                 card.classList.add("card");
                 
-                // === Mapeo NO invasivo a subpáginas (si coincide, usamos la subpágina estática.
-                // Si no coincide, mantenemos el comportamiento original de evento-detalle.html?id=slug ===
-                const slug = evento.id;
-
-                // Por seguridad comprobamos con startsWith/includes (más tolerante a variaciones)
-                let url = `evento-detalle.html?id=${slug}`; // fallback original
-
-                if (slug.startsWith("integracion-de-la-biodiversidad")) {
-                    url = "integracion-biodiversidad.html";
-                } else if (slug.includes("biodiverciudad") || slug.startsWith("foro-cali-biodiverciudad")) {
-                    url = "foro-cali-biodiverciudad.html";
-                } else if (slug.startsWith("interaccion-de-la-uao") || slug.startsWith("interaccion-uao")) {
-                    url = "interaccion-uao-biodiversidad.html";
-                } else if (slug.includes("batallas") && slug.includes("freestyle") || slug.startsWith("batallas-de-freestyle")) {
-                    url = "batallas-freestyle.html";
-                } else if (slug.includes("cafe-uao") || slug.includes("cafe-uao") || slug.includes("cafe")) {
-                    url = "cafe-uao.html";
-                } else if (slug.includes("obra") && slug.includes("teatro") || slug.startsWith("obra-de-teatro")) {
-                    url = "obra-teatro.html";
-                } else if (slug.includes("improvisacion") && slug.includes("teatral")) {
-                    url = "improvisacion-teatral.html";
-                } else if (slug.includes("colectivo") && slug.includes("fotografico")) {
-                    url = "colectivo-fotografico.html";
-                } else if (slug.includes("bailes") && slug.includes("urbanos")) {
-                    url = "bailes-urbanos.html";
-                } else if (slug.includes("ensamble") && slug.includes("coral")) {
-                    url = "ensamble-coral.html";
-                } else if (slug.includes("orquesta") && slug.includes("salsa")) {
-                    url = "orquesta-salsa.html";
-                }
-                // === fin mapeo ===
+                // === CAMBIO CRÍTICO: Usamos el ID para apuntar al archivo dinámico ===
+                const url = `evento-detalle.html?id=${evento.id}`;
+                // ====================================================================
                 
                 const horaDisplay = `${formatHora12H(evento.hora_inicio)} - ${formatHora12H(evento.hora_fin)}`;
                 const fechaDisplay = evento.fecha.split('-').reverse().join('-');
@@ -167,7 +138,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Aplicamos las imágenes después de que se inserta el HTML
             aplicarImagenesDeFondo();
             
-            // --- Reemplazo de botones por enlaces (Tu lógica anterior) ---
+            // --- Reemplazo de botones por enlaces ---
 
             const btnExplorarTodos = document.querySelector("#objetivo-principal .btn-secondary");
             if(btnExplorarTodos) {
@@ -190,6 +161,6 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         })
         .catch((error) => {
-            console.error("Error:", error);
+            console.error("Error al cargar y procesar eventos.json:", error);
         });
 });

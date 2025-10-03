@@ -1,22 +1,30 @@
-/* Fuente base */
+/* ==================================== */
+/* 1. ESTILOS BASE Y GENERALES */
+/* ==================================== */
 body {
-    font-family: 'Inter', sans-serif;
+    /* Unificado: Usar Poppins como en index.html */
+    font-family: "Poppins", sans-serif; 
+    line-height: 1.6;
     margin: 0;
     padding: 0;
-    background-color: #f5f1e7;
+    /* Unificado: Fondo color crema/hueso */
+    background-color: #efdfc5; 
     color: #333333;
 }
 
 /* --- Navegación --- */
 header {
-    background-color: #e1252a;
-    padding: 10px 0;
+    /* Unificado: Usar el rojo de index.html */
+    background-color: #df2531; 
+    padding: 1rem 0; /* Ajustado a 1rem para ser consistente con index.html */
     box-shadow: 0 2px 5px rgba(0,0,0,0.15);
     position: sticky;
     top: 0;
     z-index: 100;
+    color: white;
 }
 
+/* Usamos el mismo .container si es posible, pero mantenemos .container-nav */
 .container-nav {
     width: 90%;
     max-width: 1200px;
@@ -27,25 +35,32 @@ header {
 }
 
 .logo a {
-    font-weight: 900;
+    font-weight: 600; /* Coherente con el .logo del index */
     font-size: 1.5rem;
-    color: white;
+    color: #efdfc5; /* Color del texto del logo en index.html */
     text-decoration: none;
-    font-family: Arial, sans-serif;
-    text-transform: lowercase;
+    font-family: "Poppins", sans-serif; /* Coherente con el body */
+    text-transform: none; /* Quitamos el lowercase si no es necesario */
+}
+
+.logo-img {
+    /* CORRECCIÓN: Ajustamos la altura para que no sea gigante */
+    height: 70px; /* Prueba con 40px o 50px */
+    width: auto;
+    display: block; 
 }
 
 .menu {
     list-style: none;
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem; /* Ajustado a 1.5rem como en index.html */
     margin: 0;
     padding: 0;
 }
 
 .menu li a {
     text-decoration: none;
-    color: white;
+    color: #efdfc5; /* Color crema del index */
     font-weight: 500;
     font-size: 1rem;
     transition: color 0.3s ease;
@@ -55,10 +70,12 @@ header {
     color: #ffce00;
 }
 
+/* Botón de Ingresar */
 .btn-ingresar {
+    /* Usar la paleta de btn-primary del index.html */
     background-color: black;
-    color: white;
-    padding: 8px 16px;
+    color: #efdfc5; 
+    padding: 0.4rem 1.5rem; /* Coherente con btn-primary del index */
     border-radius: 5px;
     text-decoration: none;
     font-weight: 600;
@@ -70,23 +87,30 @@ header {
     background-color: #333333;
 }
 
-/* --- Contenido principal --- */
+/* ==================================== */
+/* 2. CONTENIDO PRINCIPAL (EVENTO-DETALLE) */
+/* ==================================== */
 main {
     max-width: 1100px;
     margin: 40px auto 80px auto;
-    background-color: white;
+    /* Unificado: Fondo blanco/hueso para el contenedor de la tarjeta */
+    background-color: #f7f1e7; 
     border-radius: 10px;
     box-shadow: 0 6px 15px rgba(0,0,0,0.1);
     overflow: hidden;
     padding: 0 20px 40px 20px;
 }
 
-.evento-detalle img {
-    width: 100%;
-    height: auto;
-    display: block;
+/* Imagen de Detalle (Ahora es background) */
+.imagen-evento-detalle {
+    /* Estilo para la imagen de detalle */
+    height: 400px; 
+    background-size: cover;
+    background-position: center;
+    position: relative;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
+    margin-bottom: 20px;
 }
 
 .informacion-evento {
@@ -94,7 +118,8 @@ main {
 }
 
 .informacion-evento h1 {
-    color: #e1252a;
+    /* Unificado: Usar el rojo de index.html */
+    color: #df2531; 
     font-weight: 700;
     font-size: 2.2rem;
     margin-bottom: 10px;
@@ -113,8 +138,9 @@ article {
 }
 
 article h2 {
+    /* Unificado: Usar el rojo de index.html */
     font-weight: 700;
-    color: #e1252a;
+    color: #df2531; 
     margin-bottom: 15px;
 }
 
@@ -125,11 +151,14 @@ article p {
     margin-bottom: 15px;
 }
 
-/* --- Pie de página --- */
+/* ==================================== */
+/* 3. FOOTER Y ESTADOS */
+/* ==================================== */
 footer {
-    background-color: #e1252a;
-    color: white;
-    padding: 25px 0;
+    /* Unificado: Usar el rojo de index.html */
+    background-color: #df2531; 
+    color: #efdfc5; /* Unificado: Usar el color crema */
+    padding: 1rem 0; /* Coherente con index.html */
     margin-top: 40px;
 }
 
@@ -140,6 +169,7 @@ footer {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    align-items: center;
 }
 
 .footer-info p {
@@ -148,7 +178,7 @@ footer {
 }
 
 .footer-links a {
-    color: white;
+    color: #efdfc5; /* Unificado: Usar el color crema */
     text-decoration: none;
     margin-left: 25px;
     font-weight: 500;
@@ -160,7 +190,31 @@ footer {
     color: #ffce00;
 }
 
-/* Responsive */
+/* Estilos para el estado (Consistencia en colores) */
+.estado-evento {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+.estado-evento.finalizado {
+    background-color: #757575; /* Gris */
+}
+.estado-evento.proximamente {
+    background-color: #df2531; /* Rojo UAO del index.html */
+}
+.estado-evento.en-curso {
+    background-color: #4CAF50; /* Verde */
+    color: white; /* Asegurar contraste */
+}
+
+/* ==================================== */
+/* 4. RESPONSIVE MEDIA QUERIES */
+/* ==================================== */
 @media(max-width: 768px) {
     .container-nav {
         flex-direction: column;
@@ -178,5 +232,8 @@ footer {
     .footer-links a {
         margin-left: 0;
         margin-right: 15px;
+    }
+    .imagen-evento-detalle {
+        height: 250px;
     }
 }

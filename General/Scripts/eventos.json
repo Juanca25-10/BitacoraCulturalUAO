@@ -10,7 +10,13 @@
       "hora_fin": "10:45",
       "lugar": "Auditorio principal, Banco de la República (Cali)",
       "tipo": "Académico - Semana de la Biodiversidad",
-      "imagen_path": "../../General/Recursos/imagenes/Obra teatro.jpg"
+      "imagen_path": "../../General/Recursos/imagenes/integracion_biodiversidad.jpg",
+ 
+      "descripcion_larga": [
+        "Conferencia magistral que aborda la importancia de incluir la conservación y el manejo de la biodiversidad en las políticas y planes de desarrollo urbano. Se presentarán modelos exitosos de ciudades latinoamericanas.",
+        "El objetivo es fomentar una visión territorial que vea la naturaleza no solo como un recurso, sino como un pilar fundamental para la calidad de vida y la sostenibilidad a largo plazo de Cali."
+      ],
+      "enlace_inscripcion": "https://forms.uao.edu.co/inscripcion/integracion-bio"
     },
     {
       "id": "foro-cali-biodiverciudad",
@@ -20,7 +26,13 @@
       "hora_fin": "11:30",
       "lugar": "Auditorio principal, Banco de la República (Cali)",
       "tipo": "Académico - Semana de la Biodiversidad",
-      "imagen_path": "../../General/Recursos/imagenes/Obra teatro.jpg"
+      "imagen_path": "../../General/Recursos/imagenes/foro_cali_biodiverciudad.jpg",
+   
+      "descripcion_larga": [
+        "Este foro reúne a académicos, líderes comunitarios y representantes del sector público para discutir el concepto de 'Biodiverciudad', que busca armonizar el crecimiento urbano con la conservación de la naturaleza.",
+        "Se explorarán políticas públicas innovadoras, casos de éxito nacionales e internacionales, y mecanismos de participación ciudadana para lograr un desarrollo urbano sostenible y responsable. Contará con la participación de la Alcaldía de Cali."
+      ],
+      "enlace_inscripcion": "https://forms.uao.edu.co/inscripcion/foro-biodiverciudad"
     },
     {
       "id": "interaccion-uao-territorio",
@@ -30,7 +42,13 @@
       "hora_fin": "16:00",
       "lugar": "Teatrino del Teatro Municipal Enrique Buenaventura (Cali)",
       "tipo": "Académico - Semana de la Biodiversidad",
-      "imagen_path": "../../General/Recursos/imagenes/Obra teatro.jpg"
+      "imagen_path": "../../General/Recursos/imagenes/interaccion_uao_territorio.jpg",
+    
+      "descripcion_larga": [
+        "Un panel de discusión que destaca los proyectos de investigación y extensión de la UAO que impactan directamente en la conservación de ecosistemas locales, como los Farallones de Cali y el Río Pance.",
+        "Expertos y estudiantes presentarán sus hallazgos, demostrando cómo la academia se vincula activamente en la solución de problemas ambientales del Valle del Cauca."
+      ],
+      "enlace_inscripcion": "https://forms.uao.edu.co/inscripcion/interaccion-territorio"
     },
     {
       "id": "batallas-freestyle",
@@ -40,7 +58,12 @@
       "hora_fin": "19:30",
       "lugar": "Salón de Actividades, Bienestar Universitario UAO",
       "tipo": "Cultural - Música",
-      "imagen_path": "../../General/Recursos/imagenes/Obra teatro.jpg"
+      "imagen_path": "../../General/Recursos/imagenes/batallas_freestyle.jpg",
+
+      "descripcion_larga": [
+        "¡Demuestra tu ingenio y rapidez mental! El evento reúne a los mejores MCs de la universidad para una competencia de rimas improvisadas, llena de energía, ritmo y cultura urbana."
+      ],
+      "enlace_inscripcion": "https://forms.uao.edu.co/inscripcion/batallas-freestyle"
     },
     {
       "id": "cafe-uao",
@@ -50,7 +73,12 @@
       "hora_fin": "20:00",
       "lugar": "Plazoleta Central, UAO",
       "tipo": "Cultural - Encuentro artístico",
-      "imagen_path": "../../General/Recursos/imagenes/Obra teatro.jpg"
+      "imagen_path": "../../General/Recursos/imagenes/cafe_uao.jpg",
+
+      "descripcion_larga": [
+        "Un espacio relajado y artístico donde los estudiantes pueden compartir sus talentos en música, poesía y *stand-up comedy* mientras disfrutan de un buen café. Abierto a la comunidad UAO."
+      ],
+      "enlace_inscripcion": "https://forms.uao.edu.co/inscripcion/cafe-uao"
     },
     {
       "id": "obra-teatro-estudiantil",
@@ -60,7 +88,12 @@
       "hora_fin": "18:30",
       "lugar": "Centro Cultural y Deportivo UAO",
       "tipo": "Cultural - Artes escénicas",
-      "imagen_path": "../../General/Recursos/imagenes/Obra teatro.jpg"
+      "imagen_path": "../../General/Recursos/imagenes/Obra teatro.jpg",
+
+      "descripcion_larga": [
+        "Presentación de una pieza teatral original creada e interpretada por el grupo de teatro de Bienestar Universitario. Una obra que explora temas de identidad y vida universitaria con humor y drama."
+      ],
+      "enlace_inscripcion": "https://forms.uao.edu.co/inscripcion/obra-teatro"
     },
     {
       "id": "improvisacion-teatral",
@@ -71,7 +104,12 @@
       "hora_fin": "19:00",
       "lugar": "Salón de Danzas, Centro Cultural y Deportivo UAO",
       "tipo": "Taller formativo",
-      "imagen_path": "../../General/Recursos/imagenes/Obra teatro.jpg"
+      "imagen_path": "../../General/Recursos/imagenes/improvisacion_teatral.jpg",
+     
+      "descripcion_larga": [
+        "Taller de iniciación a las técnicas de improvisación. Desarrolla tu creatividad, agilidad mental y habilidad para el trabajo en equipo a través de juegos y ejercicios escénicos dinámicos."
+      ],
+      "enlace_inscripcion": "https://forms.uao.edu.co/inscripcion/taller-impro"
     },
     {
       "id": "colectivo-fotografico",
@@ -82,7 +120,12 @@
       "hora_fin": "19:00",
       "lugar": "Laboratorio de Lúdica y Creatividad, Sótano 2 UAO",
       "tipo": "Taller formativo",
-      "imagen_path": "../../General/Recursos/imagenes/Obra teatro.jpg"
+      "imagen_path": "../../General/Recursos/imagenes/colectivo_fotografico.jpg",
+
+      "descripcion_larga": [
+        "Únete a nuestro colectivo y aprende técnicas de composición, iluminación y revelado digital. Ideal para estudiantes que desean llevar sus habilidades fotográficas a un nivel profesional y documentar la vida universitaria."
+      ],
+      "enlace_inscripcion": "https://forms.uao.edu.co/inscripcion/taller-foto"
     },
     {
       "id": "bailes-urbanos",
@@ -93,7 +136,12 @@
       "hora_fin": "16:00",
       "lugar": "Salón de Danzas, Centro Cultural y Deportivo UAO",
       "tipo": "Taller formativo",
-      "imagen_path": "../../General/Recursos/imagenes/Obra teatro.jpg"
+      "imagen_path": "../../General/Recursos/imagenes/bailes_urbanos.jpg",
+ 
+      "descripcion_larga": [
+        "Taller de iniciación a estilos como Hip-Hop, Locking y Breaking. Aprende los fundamentos, desarrolla coordinación y gana confianza en el escenario. No se requiere experiencia previa."
+      ],
+      "enlace_inscripcion": "https://forms.uao.edu.co/inscripcion/taller-urbano"
     },
     {
       "id": "ensamble-coral",
@@ -104,7 +152,12 @@
       "hora_fin": "19:30",
       "lugar": "Salón de Actividades, Bienestar Universitario UAO",
       "tipo": "Taller formativo",
-      "imagen_path": "../../General/Recursos/imagenes/Obra teatro.jpg"
+      "imagen_path": "../../General/Recursos/imagenes/ensamble_coral.jpg",
+  
+      "descripcion_larga": [
+        "Si te apasiona el canto y la armonía vocal, este es tu espacio. Practicamos repertorio diverso (pop, folclore, clásico) para presentarnos en eventos culturales de la UAO. ¡Únete a nuestra voz!"
+      ],
+      "enlace_inscripcion": "https://forms.uao.edu.co/inscripcion/taller-coral"
     },
     {
       "id": "orquesta-salsa",
@@ -115,7 +168,12 @@
       "hora_fin": "21:30",
       "lugar": "Salón Acústico, Bienestar Universitario UAO",
       "tipo": "Taller formativo",
-      "imagen_path": "../../General/Recursos/imagenes/Obra teatro.jpg"
+      "imagen_path": "../../General/Recursos/imagenes/orquesta_salsa.jpg",
+     
+      "descripcion_larga": [
+        "Un taller avanzado para músicos que deseen formar parte de la orquesta oficial de salsa de la UAO. Trabajamos en la interpretación de clásicos y nuevos temas de la salsa caleña y mundial."
+      ],
+      "enlace_inscripcion": "https://forms.uao.edu.co/inscripcion/taller-salsa"
     }
   ]
 }
