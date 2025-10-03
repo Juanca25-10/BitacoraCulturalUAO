@@ -108,6 +108,16 @@ document.addEventListener("DOMContentLoaded", () => {
                     url = "cafe-uao.html";
                 } else if (slug.includes("obra") && slug.includes("teatro") || slug.startsWith("obra-de-teatro")) {
                     url = "obra-teatro.html";
+                } else if (slug.includes("improvisacion") && slug.includes("teatral")) {
+                    url = "improvisacion-teatral.html";
+                } else if (slug.includes("colectivo") && slug.includes("fotografico")) {
+                    url = "colectivo-fotografico.html";
+                } else if (slug.includes("bailes") && slug.includes("urbanos")) {
+                    url = "bailes-urbanos.html";
+                } else if (slug.includes("ensamble") && slug.includes("coral")) {
+                    url = "ensamble-coral.html";
+                } else if (slug.includes("orquesta") && slug.includes("salsa")) {
+                    url = "orquesta-salsa.html";
                 }
                 // === fin mapeo ===
                 
