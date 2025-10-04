@@ -14,9 +14,8 @@ body {
 
 /* --- Navegación --- */
 header {
-    /* Unificado: Usar el rojo de index.html */
     background-color: #df2531; 
-    padding: 1rem 0; /* Ajustado a 1rem para ser consistente con index.html */
+    padding: 1rem 0;
     box-shadow: 0 2px 5px rgba(0,0,0,0.15);
     position: sticky;
     top: 0;
@@ -24,7 +23,6 @@ header {
     color: white;
 }
 
-/* Usamos el mismo .container si es posible, pero mantenemos .container-nav */
 .container-nav {
     width: 90%;
     max-width: 1200px;
@@ -35,17 +33,16 @@ header {
 }
 
 .logo a {
-    font-weight: 600; /* Coherente con el .logo del index */
+    font-weight: 600;
     font-size: 1.5rem;
-    color: #efdfc5; /* Color del texto del logo en index.html */
+    color: #efdfc5;
     text-decoration: none;
-    font-family: "Poppins", sans-serif; /* Coherente con el body */
-    text-transform: none; /* Quitamos el lowercase si no es necesario */
+    font-family: "Poppins", sans-serif;
+    text-transform: none;
 }
 
 .logo-img {
-    /* CORRECCIÓN: Ajustamos la altura para que no sea gigante */
-    height: 70px; /* Prueba con 40px o 50px */
+    height: 70px; 
     width: auto;
     display: block; 
 }
@@ -53,14 +50,14 @@ header {
 .menu {
     list-style: none;
     display: flex;
-    gap: 1.5rem; /* Ajustado a 1.5rem como en index.html */
+    gap: 1.5rem;
     margin: 0;
     padding: 0;
 }
 
 .menu li a {
     text-decoration: none;
-    color: #efdfc5; /* Color crema del index */
+    color: #efdfc5;
     font-weight: 500;
     font-size: 1rem;
     transition: color 0.3s ease;
@@ -72,10 +69,9 @@ header {
 
 /* Botón de Ingresar */
 .btn-ingresar {
-    /* Usar la paleta de btn-primary del index.html */
     background-color: black;
     color: #efdfc5; 
-    padding: 0.4rem 1.5rem; /* Coherente con btn-primary del index */
+    padding: 0.4rem 1.5rem;
     border-radius: 5px;
     text-decoration: none;
     font-weight: 600;
@@ -86,111 +82,71 @@ header {
 .btn-ingresar:hover {
     background-color: #333333;
 }
+.btn-secundario {
+    /* Estilo del botón "Volver" */
+    display: inline-block;
+    color: #df2531;
+    text-decoration: none;
+    font-weight: 500;
+    border: 1px solid #df2531;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+.btn-secundario:hover {
+    background-color: #df2531;
+    color: #efdfc5;
+}
+
 
 /* ==================================== */
 /* 2. CONTENIDO PRINCIPAL (EVENTO-DETALLE) */
+/* (Estructura de Banner + Grilla de 2 Columnas) */
 /* ==================================== */
+
+/* Quitamos el fondo y la sombra del main para que la tarjeta la dé la sección */
 main {
-    max-width: 1100px;
+    max-width: 1200px;
     margin: 40px auto 80px auto;
-    /* Unificado: Fondo blanco/hueso para el contenedor de la tarjeta */
-    background-color: #f7f1e7; 
+    padding: 0 20px;
+}
+
+/* El contenedor principal del evento detalle (fondo blanco, sombra, borde) */
+.evento-detalle {
+    background-color: #f7f1e7; /* Fondo blanco/hueso para la tarjeta */
     border-radius: 10px;
     box-shadow: 0 6px 15px rgba(0,0,0,0.1);
     overflow: hidden;
-    padding: 0 20px 40px 20px;
+    padding-bottom: 30px;
 }
 
-/* Imagen de Detalle (Ahora es background) */
+/* --- Título sobre la imagen (Banner) --- */
 .imagen-evento-detalle {
-    /* Estilo para la imagen de detalle */
     height: 400px; 
     background-size: cover;
     background-position: center;
-    position: relative;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    margin-bottom: 20px;
-}
-
-.informacion-evento {
-    padding: 30px 30px 20px 30px;
-}
-
-.informacion-evento h1 {
-    /* Unificado: Usar el rojo de index.html */
-    color: #df2531; 
-    font-weight: 700;
-    font-size: 2.2rem;
-    margin-bottom: 10px;
-}
-
-.fecha-hora,
-.lugar {
-    font-weight: 600;
-    font-size: 1rem;
-    margin-bottom: 10px;
-    color: #555555;
-}
-
-article {
-    margin-top: 25px;
-}
-
-article h2 {
-    /* Unificado: Usar el rojo de index.html */
-    font-weight: 700;
-    color: #df2531; 
-    margin-bottom: 15px;
-}
-
-article p {
-    line-height: 1.6;
-    font-size: 1rem;
-    color: #444444;
-    margin-bottom: 15px;
-}
-
-/* ==================================== */
-/* 3. FOOTER Y ESTADOS */
-/* ==================================== */
-footer {
-    /* Unificado: Usar el rojo de index.html */
-    background-color: #df2531; 
-    color: #efdfc5; /* Unificado: Usar el color crema */
-    padding: 1rem 0; /* Coherente con index.html */
-    margin-top: 40px;
-}
-
-.container-footer {
-    width: 90%;
-    max-width: 1200px;
-    margin: 0 auto;
+    position: relative; 
+    margin-bottom: 0; 
+    
+    /* Degradado y Padding para el título */
     display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-end;
+    padding: 20px 40px;
+    box-sizing: border-box;
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.5) 100%);
 }
 
-.footer-info p {
-    margin: 6px 0;
-    font-size: 0.9rem;
+.titulo-sobre-imagen {
+    color: white !important;
+    font-size: 3rem !important; 
+    font-weight: 700 !important;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    line-height: 1.1;
+    z-index: 5;
 }
 
-.footer-links a {
-    color: #efdfc5; /* Unificado: Usar el color crema */
-    text-decoration: none;
-    margin-left: 25px;
-    font-weight: 500;
-    font-size: 0.9rem;
-    transition: color 0.3s ease;
-}
-
-.footer-links a:hover {
-    color: #ffce00;
-}
-
-/* Estilos para el estado (Consistencia en colores) */
+/* Estado del evento (Mantener sobre la imagen) */
 .estado-evento {
     position: absolute;
     top: 20px;
@@ -200,21 +156,274 @@ footer {
     color: white;
     font-weight: 600;
     font-size: 0.9rem;
+    z-index: 5;
 }
 .estado-evento.finalizado {
-    background-color: #757575; /* Gris */
+    background-color: #757575;
 }
 .estado-evento.proximamente {
-    background-color: #df2531; /* Rojo UAO del index.html */
+    background-color: #df2531;
 }
 .estado-evento.en-curso {
-    background-color: #4CAF50; /* Verde */
-    color: white; /* Asegurar contraste */
+    background-color: #ffc107;
+    color: #333333;
 }
+
+/* --- Contenido de la Grilla (Dos Columnas) --- */
+.contenido-panel-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Columna principal (2/3) y lateral (1/3) */
+    gap: 30px;
+    padding: 30px 40px 0 40px;
+}
+.informacion-evento {
+    /* La descripción del evento */
+    padding: 0; 
+}
+
+article h2 {
+    font-weight: 700;
+    color: #df2531; 
+    margin-bottom: 15px;
+    margin-top: 0; /* Aseguramos que el h2 no tenga margen superior excesivo */
+}
+
+article p {
+    line-height: 1.6;
+    font-size: 1rem;
+    color: #444444;
+    margin-bottom: 15px;
+}
+
+
+/* --- Panel Lateral (Aside) --- */
+.panel-lateral {
+    background-color: white; 
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    height: fit-content;
+}
+
+.panel-lateral h3 {
+    color: #df2531;
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin-top: 0;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #efdfc5;
+    padding-bottom: 5px;
+}
+
+.meta-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.meta-item i {
+    color: #df2531;
+    font-size: 1.2rem;
+    margin-top: 4px;
+}
+
+.meta-item strong {
+    font-weight: 600;
+    display: block;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.meta-item p {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Botón de Inscripción Lateral */
+.btn-primary-lateral {
+    display: block;
+    text-align: center;
+    background-color: #df2531;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary-lateral:hover {
+    background-color: #a31d34;
+}
+
+
+footer {
+    /* Color de fondo para la sección inferior (el rojo principal de tu sitio) */
+    background: #df2531; 
+    color: #efdfc5;
+    padding: 0; 
+    margin-top: 3rem; 
+}
+
+/* ==================================== */
+/* 2. BLOQUES DE CONTACTO (Banda Superior Oscura) */
+/* ==================================== */
+
+.footer-contact-blocks {
+    /* El color borgoña/rojo oscuro del ejemplo de la universidad */
+    background: #a31d34; 
+    padding: 30px 0;
+    display: flex;
+    /* CAMBIO: Centramos y agrupamos los bloques */
+    justify-content: center; 
+    /* CAMBIO: Espacio entre los bloques agrupados */
+    gap: 50px; 
+    flex-wrap: wrap;
+    color: #efdfc5;
+}
+
+.footer-contact-blocks > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    /* CAMBIO: Quitamos el width: 25% para que se ajusten al contenido */
+    width: auto; 
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.footer-contact-blocks i {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #efdfc5; /* Color crema para el ícono */
+}
+
+.footer-contact-blocks p {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* ==================================== */
+/* 3. SECCIÓN INFERIOR (Logo, Copyright y Enlaces) */
+/* ==================================== */
+
+.container-footer {
+    padding: 2rem 0; 
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-start; 
+    flex-wrap: wrap; 
+    text-align: left; 
+}
+
+/* Columna del Logo y Copyright */
+.footer-info {
+    flex: 1; 
+    min-width: 280px; 
+    padding-right: 20px;
+}
+
+/* CAMBIO: Agrandar el Logo de la UAO */
+.footer-info .logo-img {
+    height: 80px; 
+    width: auto;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.footer-info p {
+    margin: 6px 0;
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+
+
+/* Columna de Enlaces de Política */
+.footer-links {
+    display: flex;
+    flex-direction: column; 
+    gap: 5px; 
+    text-align: right; 
+}
+
+.footer-links a {
+    color: #efdfc5;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ffce00;
+    text-decoration: underline;
+}
+
+/* ==================================== */
+/* 4. MEDIA QUERIES (Responsivo) */
+/* ==================================== */
+
+@media (max-width: 900px) {
+    /* Ajuste para que los bloques de contacto en tablet (2 por fila) se vean bien */
+    .footer-contact-blocks {
+        /* Deshacemos el 'gap: 50px' y centramos con espacio distribuido */
+        gap: 0; 
+        justify-content: space-around;
+    }
+    .footer-contact-blocks > div {
+        width: 50%; /* Dos columnas en tablets */
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container-footer {
+        flex-direction: column; 
+        gap: 20px;
+        text-align: center; 
+    }
+
+    .footer-links {
+        text-align: center;
+        align-items: center; 
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 550px) {
+    /* Una columna en móvil para los bloques de contacto */
+    .footer-contact-blocks {
+        flex-direction: column; 
+        align-items: center;
+    }
+    .footer-contact-blocks > div {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+}
+
+
 
 /* ==================================== */
 /* 4. RESPONSIVE MEDIA QUERIES */
 /* ==================================== */
+@media(max-width: 900px) {
+    /* Pasa a una sola columna en pantallas medianas */
+    .contenido-panel-grid {
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+}
+
 @media(max-width: 768px) {
     .container-nav {
         flex-direction: column;
@@ -235,5 +444,9 @@ footer {
     }
     .imagen-evento-detalle {
         height: 250px;
+        padding: 15px 20px; /* Reducimos el padding en móvil */
+    }
+    .titulo-sobre-imagen {
+        font-size: 2rem !important; /* Reducimos el título en móvil */
     }
 }

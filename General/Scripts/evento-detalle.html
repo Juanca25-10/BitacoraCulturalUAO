@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title id="detalle-titulo-pagina">Cargando Detalle del Evento...</title> 
     
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <link rel="icon" type="image/png" href="../../General/Recursos/imagenes/favicon.png">
     <link rel="stylesheet" href="subpaginasStyle.css" /> 
     <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
 </head>
@@ -24,47 +27,88 @@
     </header>
 
     <main>
-        <section class="evento-detalle">
-            
-            <div id="detalle-imagen" class="imagen-evento-detalle">
-                <span id="detalle-estado" class="estado-evento"></span>
-            </div>
+    <section class="evento-detalle container">
+        
+        <div id="detalle-imagen" class="imagen-evento-detalle">
+            <h1 id="detalle-nombre" class="titulo-sobre-imagen">Cargando Nombre del Evento...</h1>
+            <span id="detalle-estado" class="estado-evento"></span>
+        </div>
 
-            <div class="informacion-evento">
-                <h1 id="detalle-nombre">Cargando Nombre del Evento...</h1>
-                
-                <p class="fecha-hora"><strong>Fecha y hora: </strong><span id="meta-fechahora">...</span></p>
-                <p class="lugar"><strong>Lugar: </strong><span id="meta-lugar">...</span></p>
-                
-                <article>
+        <div class="contenido-panel-grid">
+            
+            <div class="contenido-principal">
+                <article class="informacion-evento">
                     <h2>Descripción del evento</h2>
                     <div id="detalle-descripcion">
                         <p>...</p> 
                     </div>
                 </article>
                 
-                <a href="#" id="detalle-cta" class="btn-ingresar" style="margin-top: 20px;">Inscríbete Aquí</a>
-
-                <a href="index.html" class="btn-secundario" style="margin-top: 20px; display: block;">← Volver al inicio</a>
-
+                <a href="index.html" class="btn-secundario" style="margin-top: 20px; display: inline-block;">← Volver a Eventos</a>
             </div>
-        </section>
-    </main>
 
-    <footer> 
-        <div class="container-footer">
-            <div class="footer-info">
-                <p>© 2025 Universidad Autónoma de Occidente - Todos los derechos reservados</p>
-                <p>Av. Simón Bolívar Calle 22 No 49-51, Cali, Colombia</p>
-                <p>Teléfono: +57 (2) 555 1234</p>
-            </div>
-            <div class="footer-links">
-                <a href="politica-privacidad.html">Política de privacidad</a>
-                <a href="terminos.html">Términos y condiciones</a>
-                <a href="contacto.html">Contacto</a>
-            </div>
+            <aside class="panel-lateral">
+                <h3>Detalles clave</h3>
+                <div class="meta-item">
+                    <i class="fi fi-sr-calendar-clock"></i>
+                    <div>
+                        <strong>Fecha y hora:</strong>
+                        <p id="meta-fechahora">Cargando...</p>
+                    </div>
+                </div>
+                
+                <div class="meta-item">
+                    <i class="fi fi-sr-marker"></i>
+                    <div>
+                        <strong>Lugar:</strong>
+                        <p id="meta-lugar">Cargando...</p>
+                    </div>
+                </div>
+
+                <a href="#" id="detalle-cta" class="btn-primary-lateral">Inscríbete Aquí</a>
+
+            </aside>
+            
         </div>
-    </footer>
+    </section>
+</main>
+
+    <footer>
+    <div class="footer-contact-blocks">
+        <div>
+            <i class="fi fi-sr-phone-call"></i>
+            <p>PBX: (602) 318 8000</p>
+        </div>
+        <div>
+            <i class="fi fi-sr-envelope"></i>
+            <p>buzon@uao.edu.co</p>
+        </div>
+        <div>
+            <i class="fi fi-sr-marker"></i>
+            <p>Calle 25 #115-85 Km 2 Vía Cali - Jamundí</p>
+        </div>
+        <div>
+            <i class="fi fi-sr-checkbox"></i> 
+            <p>Nit: 890.312.016-3 | Vigilada Mineducación</p>
+        </div>
+    </div>
+    
+    <div class="container container-footer">
+        <div class="footer-info">
+            <img src="../../General/Recursos/imagenes/logoUAO_WebSite.png" alt="Logo UAO" class="logo-img" style="height: 125px;"> 
+            <p style="margin-top: 10px;">© 2025 Universidad Autónoma de Occidente</p>
+        </div>
+        
+        <div class="footer-links">
+            <a href="#">Mapa del sitio</a>
+            <a href="#">Términos y condiciones</a>
+            <a href="#">Protección de datos</a>
+            <a href="#">Política de tratamiento</a>
+            <a href="#">Valores de Matrícula</a>
+            <a href="#">Derechos Pecuniarios</a>
+        </div>
+    </div>
+</footer>
 
     <script src="detalle.js"></script>
 </body>

@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eventos Culturales UAO</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+    <link rel="icon" type="image/png" href="../../General/Recursos/imagenes/favicon.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
@@ -16,7 +20,7 @@
                 <li><a href="#objetivos-secundarios">Talleres</a></li>
                 <li><a href="#actividades">Testimonios</a></li>
     </ul>
-    <button class="btn-primary">Ingresar</button>
+    <a href="https://campus.uaovirtual.edu.co/login/index.php" class="btn-primary">Ingresar Portal</a>
 </nav>
     </header>
 
@@ -34,42 +38,61 @@
             </p>
             <a href="#objetivo-principal" class="btn-primary">Ver próximos eventos</a>
         </div>
-    </div>
+        
+        <div class="hero-modelo-3d">
+            <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.74/build/spline-viewer.js"></script>
+<spline-viewer url="https://prod.spline.design/AKmjbjiTcCE5w9MO/scene.splinecode"></spline-viewer>
+        </div>
+        </div>
 </section>
     
     <main class="main-content container">
-        
-        <section class="content-slider" id="objetivo-principal">
-            <div class="section-header">
-                <h2>Próximos eventos (Slider)</h2>
-                <button class="btn-secondary">Explorar todos</button>
-            </div>
-            <div class="cards carousel-container" id="eventos-container">
-                </div>
-            <div class="carousel-indicators">
-                <div class="indicator"></div>
-                <div class="indicator active"></div>
-                <div class="indicator"></div>
-            </div>
-        </section>
+    
+    <section class="content-slider" id="objetivo-principal">
+        <div class="section-header">
+            <h2>Próximos eventos (Slider)</h2>
+            <button class="btn-secondary">Explorar todos</button>
+        </div>
+        <div class="cards carousel-container" id="eventos-container">
+        </div>
+        <div class="carousel-indicators">
+            <div class="indicator"></div>
+            <div class="indicator active"></div>
+            <div class="indicator"></div>
+        </div>
+    </section>
 
-        <aside class="content-sidebar">
-            <div class="section-header">
-                <h2>Talleres culturales</h2>
-                <button class="btn-secondary">Ver más</button>
-            </div>
-            <div class="stories-list" id="talleres-container">
-                </div>
-        </aside>
+    <section class="intermedia">
+        <h2>Compromiso UAO</h2>
+        <p>
+            La Universidad Autónoma de Occidente (UAO) está profundamente comprometida con el desarrollo social, cultural y ambiental de Cali y toda la región Suroccidente de Colombia. Más allá de la formación académica, nuestra misión es actuar como un motor de transformación territorial. A través de nuestros diversos eventos y talleres, buscamos fortalecer el vínculo indisoluble con la comunidad, ofreciendo espacios de crecimiento integral no solo a nuestros estudiantes, sino a la ciudadanía en general.
 
+Estas actividades están diseñadas para impulsar el pensamiento crítico, la expresión artística y la conciencia cívica y ambiental. Creemos firmemente en el poder de la cultura y la academia para generar un impacto positivo y duradero, construyendo una sociedad más equitativa, sostenible y con mayor calidad de vida para todos.
+        </p>
         <section class="intermedia">
-            <h2>Compromiso UAO</h2>
-            <p>
-                La Universidad Autónoma de Occidente está comprometida con el desarrollo social y cultural de Cali y la región. Nuestros eventos y talleres buscan fortalecer el vínculo con la comunidad y ofrecer espacios de crecimiento integral a nuestros estudiantes y a la ciudadanía en general.
-            </p>
-        </section>
+    <h3>Video: Conoce Bienestar Universitario</h3>
+    <div class="video-responsive">
+        <iframe width="560" height="315" 
+            src="https://www.youtube.com/embed/X9vSOPeZL50" 
+            title="Bienestar Universitario - Universidad Autónoma de Occidente" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+        </iframe>
+    </div>
+    </section>
+    </section>
 
-    </main>
+    <aside class="content-sidebar">
+        <div class="section-header">
+            <h2>Talleres culturales</h2>
+            <button class="btn-secondary">Ver más</button>
+        </div>
+        <div class="stories-list" id="talleres-container">
+        </div>
+    </aside>
+
+</main>
     
     <section class="testimonios" id="actividades">
         <div class="container">
@@ -116,11 +139,54 @@
     </section>
 
     <footer>
-        <div class="container">
-            <p>© 2025 Universidad Autónoma de Occidente · Bienestar Universitario</p>
+    <div class="footer-contact-blocks">
+        <div>
+            <i class="fi fi-sr-phone-call"></i>
+            <p>PBX: (602) 318 8000</p>
         </div>
-    </footer>
+        <div>
+            <i class="fi fi-sr-envelope"></i>
+            <p>buzon@uao.edu.co</p>
+        </div>
+        <div>
+            <i class="fi fi-sr-marker"></i>
+            <p>Calle 25 #115-85 Km 2 Vía Cali - Jamundí</p>
+        </div>
+        <div>
+            <i class="fi fi-sr-checkbox"></i> 
+            <p>Nit: 890.312.016-3 | Vigilada Mineducación</p>
+        </div>
+    </div>
+    
+    <div class="container container-footer">
+        <div class="footer-info">
+            <img src="../../General/Recursos/imagenes/logoUAO_WebSite.png" alt="Logo UAO" class="logo-img" style="height: 125px;"> 
+            <p style="margin-top: 10px;">© 2025 Universidad Autónoma de Occidente</p>
+        </div>
+        
+        <div class="footer-links">
+            <a href="#">Mapa del sitio</a>
+            <a href="#">Términos y condiciones</a>
+            <a href="#">Protección de datos</a>
+            <a href="#">Política de tratamiento</a>
+            <a href="#">Valores de Matrícula</a>
+            <a href="#">Derechos Pecuniarios</a>
+        </div>
+    </div>
+</footer>
 
     <script src="script.js"></script>
+
+    <div class="social-bar">
+    <a href="https://www.instagram.com/universidadautonomadeoccidente/" target="_blank" class="social-icon instagram">
+        <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.youtube.com/@universidadautonomadeoccidente" target="_blank" class="social-icon youtube">
+        <i class="fab fa-youtube"></i>
+    </a>
+    <a href="https://www.linkedin.com/school/universidadautonomadeoccidente/posts/?feedView=all" target="_blank" class="social-icon linkedin">
+        <i class="fab fa-linkedin-in"></i>
+    </a>
+</div>
 </body>
 </html>

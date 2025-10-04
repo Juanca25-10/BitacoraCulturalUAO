@@ -80,7 +80,10 @@ nav {
     font-weight: 600;
 }
 
-/* HERO IMAGE (SECCIÓN SUPERIOR) */
+/* ==================================== */
+/* HERO IMAGE (SECCIÓN SUPERIOR) - MODIFICADO PARA MODELO 3D */
+/* ==================================== */
+
 .hero-image {
     background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
                 /* RUTA CORREGIDA: Sube dos niveles, luego baja a la carpeta de imagen */
@@ -92,18 +95,25 @@ nav {
 }
 
 .hero-content {
+    /* CAMBIO CLAVE: Cambiamos a Flexbox horizontal y eliminamos la alineación central */
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    flex-direction: row; /* Elementos uno al lado del otro */
+    justify-content: space-between; /* Distribuye el espacio entre el texto y el modelo */
+    align-items: center; /* Centra verticalmente ambos elementos */
+    text-align: left; /* Alineamos el texto a la izquierda en desktop */
+    
     min-height: 80vh;
-    gap: 1.5rem;
-    padding: 2rem 0;
+    gap: 2.5rem; /* Aumentamos el gap para separar mejor */
+    padding: 5rem 0; /* Nuevo padding para compensar el ajuste de min-height */
+}
+
+/* El bloque de texto */
+.hero-text {
+    max-width: 75%; /* Le damos un poco más de espacio al texto que al modelo 3D */
 }
 
 .hero-text h1, .hero-text p {
-    color: #f7f1e7;
+    color: #f7ffef; /* Un ligero ajuste de color para claridad */
     margin: 0.5rem 0;
 }
 
@@ -111,43 +121,130 @@ nav {
     color: #df2531;
 }
 
+/* NUEVO: Contenedor del Modelo 3D */
+.hero-modelo-3d {
+    width: 60%; /* El modelo ocupará el 60% del ancho del hero */
+    height: 300px; /* Altura específica para el modelo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* NUEVO: Estilo para el componente de Spline */
+.hero-modelo-3d spline-viewer {
+    width: 220%;
+    height: 200%;
+    border: none;
+    box-shadow: none;
+}
+
 .hero-gallery, .img-box {
     display: none;
 }
 
-/* NUEVO ESTILO: Para la imagen de decoración del Arco */
+/* Estilo para la imagen de decoración del Arco */
 .arco-decorativo {
-    /* Ajusta el tamaño para que no sea gigante */
     width: 150px; 
     height: auto;
-    /* Centramos la imagen */
-    margin: 0 auto 1.5rem auto; 
+    /* En desktop lo alineamos a la izquierda con el texto, pero en móvil deberá centrarse */
+    margin: 0 0 1.5rem 0; 
     display: block;
-    /* Hacemos la imagen blanca para que contraste con el fondo oscuro del hero */
     filter: brightness(0) invert(1);
-    opacity: 0.8; /* Si quieres que se vea un poco transparente */
+    opacity: 0.8;
 }
 
-/* CONTENIDO PRINCIPAL (RESTABLECIDO A FLUJO VERTICAL) */
+/* ==================================== */
+/* MEDIA QUERIES (Responsivo) */
+/* ==================================== */
+
+@media (max-width: 992px) {
+    .hero-content {
+        /* Volvemos a apilar verticalmente en tablet/móvil */
+        flex-direction: column;
+        text-align: center; /* Centramos el texto para móvil */
+        gap: 30px; 
+        min-height: auto; /* Dejamos que la altura se ajuste al contenido */
+        padding-top: 3rem;
+        padding-bottom: 3rem;
+    }
+
+    .hero-text {
+        max-width: 100%; /* El texto ocupa todo el ancho */
+    }
+    
+    /* Centramos los elementos de texto */
+    .hero-text h1, .hero-text p {
+        text-align: center;
+    }
+
+    /* Centramos el arco decorativo en móvil */
+    .arco-decorativo {
+        margin: 0 auto 1.5rem auto; 
+    }
+    
+    /* El modelo 3D se coloca debajo del texto */
+    .hero-modelo-3d {
+        width: 80%; /* Ocupa un buen ancho de la pantalla */
+        height: 350px; /* Reducimos la altura en móvil */
+    }
+}
+
+/* ==================================== */
+/* 2. CONTENIDO PRINCIPAL (Diseño en GRID para 2 Columnas) */
+/* ==================================== */
+
 .main-content {
-    /* ELIMINAMOS GRID Y VOLVEMOS AL FLUJO NORMAL */
-    display: block; 
-    padding: 3rem 0;
+    /* CAMBIO CLAVE: Activamos el diseño de grilla */
+    display: grid;
+    /* Definimos tres áreas: SLIDER (arriba), COMPROMISO (abajo-izq) y TALLERES (abajo-der) */
+    grid-template-areas: 
+        "slider slider"
+        "compromiso talleres";
+    /* Definimos el ancho de las columnas (Compromiso: 2/3, Talleres: 1/3) */
+    grid-template-columns: 1fr 2fr; 
+    gap: 35px; /* Espacio entre las secciones */
+    
+    /* Mantenemos el contenedor principal centrado */
+    max-width: 1200px;
+    margin: 40px auto 80px auto; /* Ajuste de margen inferior */
+    padding: 0 20px;
 }
 
-.content-slider, .content-sidebar, .intermedia {
-    /* Aseguramos que los nuevos contenedores ocupen su espacio sin Grid */
-    margin-bottom: 2rem;
+/* --- ASIGNACIÓN DE ÁREAS EN LA GRILLA --- */
+.content-slider {
+    grid-area: slider; /* Ocupa las dos columnas de arriba */
+    overflow: hidden; 
 }
 
 .intermedia {
+    grid-area: compromiso; /* Ocupa la columna izquierda */
     padding: 2rem;
-    border-radius: 10px;
+    border-radius: 7px;
     background: #f7f1e7;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    height: fit-content; /* Es crucial para que el panel no sea muy largo si el texto es corto */
+    margin-bottom: 0; /* Eliminamos el margen inferior porque ya está el gap del Grid */
 }
 
-/* SECCIONES: SLIDER Y TALLERES */
+/* Estilos de título para la sección intermedia */
+.intermedia h2 {
+    color: #df2531;
+    font-size: 1.8rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+.intermedia p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.content-sidebar {
+    grid-area: talleres; /* Ocupa la columna derecha */
+    padding: 0;
+    margin-bottom: 0; /* Eliminamos el margen inferior */
+}
+
+/* SECCIONES INTERNAS: SLIDER Y TALLERES */
 .section-header {
     display: flex;
     justify-content: space-between;
@@ -156,13 +253,9 @@ nav {
 }
 
 /* ESTILO DEL SLIDER (Próximos Eventos) */
-.content-slider {
-    overflow: hidden; 
-}
-
 /* Contenedor de Eventos (Ahora es el Slider) */
 .cards, .stories-grid, .stories-list {
-    /* Reseteamos el display grid de la versión anterior */
+    /* Lo mantenemos como un bloque dentro de su área de Grid */
     display: block; 
 }
 
@@ -185,20 +278,15 @@ nav {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* ESTILO DE TALLERES (VOLVIENDO A GRID ADAPTABLE) */
-.content-sidebar {
-    padding: 0;
-}
-
+/* ESTILO DE TALLERES (GRID ADAPTABLE dentro de la columna) */
 .stories-list {
-    /* Volvemos a un GRID de tarjetas adaptables, como estaba originalmente */
+    /* Mantenemos el GRID para los talleres dentro de la columna derecha */
     display: grid;
     gap: 1.5rem;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 }
 
 .story {
-    /* La tarjeta de taller */
     background: #f7f1e7;
     padding: 1rem; 
     border-radius: 10px;
@@ -231,6 +319,21 @@ nav {
     border-radius: 8px;
     margin-bottom: 1rem;
     position: relative; 
+}
+
+
+/* --- Media Query para volver a apilar en móvil --- */
+
+@media(max-width: 992px) {
+    .main-content {
+        /* En pantallas más pequeñas, volvemos a una sola columna */
+        grid-template-areas: 
+            "slider"
+            "compromiso"
+            "talleres";
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
 }
 
 /* ------------------------------------- */
@@ -274,13 +377,154 @@ blockquote {
     margin: 0;
 }
 
-/* Footer (SIN CAMBIOS) */
 footer {
-    background: #df2531;
+    /* Color de fondo para la sección inferior (el rojo principal de tu sitio) */
+    background: #df2531; 
     color: #efdfc5;
+    padding: 0; 
+    margin-top: 3rem; 
+}
+
+/* ==================================== */
+/* 2. BLOQUES DE CONTACTO (Banda Superior Oscura) */
+/* ==================================== */
+
+.footer-contact-blocks {
+    /* El color borgoña/rojo oscuro del ejemplo de la universidad */
+    background: #a31d34; 
+    padding: 30px 0;
+    display: flex;
+    /* CAMBIO: Centramos y agrupamos los bloques */
+    justify-content: center; 
+    /* CAMBIO: Espacio entre los bloques agrupados */
+    gap: 50px; 
+    flex-wrap: wrap;
+    color: #efdfc5;
+}
+
+.footer-contact-blocks > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
-    padding: 1rem 0;
-    margin-top: 2rem;
+    /* CAMBIO: Quitamos el width: 25% para que se ajusten al contenido */
+    width: auto; 
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.footer-contact-blocks i {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #efdfc5; /* Color crema para el ícono */
+}
+
+.footer-contact-blocks p {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+/* ==================================== */
+/* 3. SECCIÓN INFERIOR (Logo, Copyright y Enlaces) */
+/* ==================================== */
+
+.container-footer {
+    padding: 2rem 0; 
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between; 
+    align-items: flex-start; 
+    flex-wrap: wrap; 
+    text-align: left; 
+}
+
+/* Columna del Logo y Copyright */
+.footer-info {
+    flex: 1; 
+    min-width: 280px; 
+    padding-right: 20px;
+}
+
+/* CAMBIO: Agrandar el Logo de la UAO */
+.footer-info .logo-img {
+    height: 80px; 
+    width: auto;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.footer-info p {
+    margin: 6px 0;
+    font-size: 0.8rem;
+    line-height: 1.5;
+}
+
+
+/* Columna de Enlaces de Política */
+.footer-links {
+    display: flex;
+    flex-direction: column; 
+    gap: 5px; 
+    text-align: right; 
+}
+
+.footer-links a {
+    color: #efdfc5;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ffce00;
+    text-decoration: underline;
+}
+
+/* ==================================== */
+/* 4. MEDIA QUERIES (Responsivo) */
+/* ==================================== */
+
+@media (max-width: 900px) {
+    /* Ajuste para que los bloques de contacto en tablet (2 por fila) se vean bien */
+    .footer-contact-blocks {
+        /* Deshacemos el 'gap: 50px' y centramos con espacio distribuido */
+        gap: 0; 
+        justify-content: space-around;
+    }
+    .footer-contact-blocks > div {
+        width: 50%; /* Dos columnas en tablets */
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container-footer {
+        flex-direction: column; 
+        gap: 20px;
+        text-align: center; 
+    }
+
+    .footer-links {
+        text-align: center;
+        align-items: center; 
+        margin-top: 10px;
+    }
+}
+
+@media (max-width: 550px) {
+    /* Una columna en móvil para los bloques de contacto */
+    .footer-contact-blocks {
+        flex-direction: column; 
+        align-items: center;
+    }
+    .footer-contact-blocks > div {
+        width: 100%;
+        margin-bottom: 20px;
+    }
 }
 
 /* Estilos para las etiquetas de estado del evento (DINÁMICOS - SIN CAMBIOS) */
@@ -306,4 +550,104 @@ footer {
 
 .estado-evento.finalizado {
     background-color: #757575;
+}
+
+/* Estilo para el encabezado del video */
+.intermedia h3 {
+    color: #df2531; /* Color rojo UAO */
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    text-align: center;
+}
+
+/* Contenedor Responsivo para Videos (16:9) */
+.video-responsive {
+    /* Clave: Usa padding-bottom para definir la altura en base al ancho (56.25% es 9/16) */
+    position: relative;
+    padding-bottom: 56.25%; /* Relación de aspecto 16:9 */
+    height: 0;
+    overflow: hidden;
+    max-width: 100%;
+    margin: 0 auto;
+    border-radius: 8px; /* Opcional: bordes redondeados */
+}
+
+/* Ajuste del iframe para que ocupe todo el contenedor */
+.video-responsive iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* ==================================== */
+/* BARRA LATERAL FIJA DE REDES SOCIALES */
+/* ==================================== */
+
+.social-bar {
+    /* CLAVE: Fija el elemento en relación a la ventana del navegador */
+    position: fixed;
+    /* Posición: A la derecha, un poco alejado del borde */
+    right: 0;
+    /* Posición: Centrado verticalmente (combina top, transform y margin) */
+    top: 50%;
+    transform: translateY(-50%);
+    /* Asegura que esté por encima de otros elementos */
+    z-index: 1000; 
+    /* Estilo básico de la barra */
+    display: flex;
+    flex-direction: column;
+    /* Opcional: Borde sutil y sombra para destacarla */
+    border-radius: 5px 0 0 5px; /* Bordes redondeados solo a la izquierda */
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.social-icon {
+    display: block;
+    width: 45px; /* Ancho fijo para el bloque del ícono */
+    height: 45px; /* Altura fija */
+    line-height: 45px; /* Centra el ícono verticalmente */
+    text-align: center;
+    color: #f7f1e7; /* Color crema de la UAO para los íconos */
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+/* Colores de fondo específicos para cada red (opcional) */
+.social-icon.facebook {
+    background: #3b5998;
+}
+
+.social-icon.twitter {
+    background: #00aced;
+}
+
+.social-icon.instagram {
+    /* Gradiente para simular el color de Instagram */
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+.social-icon.youtube {
+    background: #ff0000;
+}
+
+.social-icon.linkedin {
+    background: #007bb6;
+}
+
+/* Efecto al pasar el mouse */
+.social-icon:hover {
+    /* Al pasar el mouse, hacemos que el botón "salga" un poco */
+    transform: translateX(-5px); 
+    color: #fff; /* Aseguramos que el ícono sea blanco */
+}
+
+/* Media Query para ocultar en pantallas muy pequeñas (opcional) */
+@media (max-width: 768px) {
+    .social-bar {
+        /* Oculta la barra lateral para no estorbar en móviles */
+        display: none; 
+    }
 }
