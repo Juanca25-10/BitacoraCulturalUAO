@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Registro de Evento - UAO</title>
+
+  <!-- Fuente y estilos -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="subpaginasStyle.css" />
+
+  <style>
+    main {
+      max-width: 800px;
+      margin: 60px auto;
+      background-color: #f7f1e7;
+      border-radius: 10px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+      padding: 40px;
+    }
+
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .form-container h1 {
+      text-align: center;
+      color: #df2531;
+      font-size: 2rem;
+      margin-bottom: 5px;
+    }
+
+    .form-container p {
+      text-align: center;
+      color: #444;
+      margin-bottom: 25px;
+      font-weight: 500;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    label {
+      font-weight: 600;
+      color: #333;
+    }
+
+    input, select, textarea {
+      padding: 10px 14px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 15px;
+      width: 100%;
+      background-color: #fff;
+    }
+
+    textarea {
+      resize: none;
+      height: 90px;
+    }
+
+    .btn-registrar {
+      background-color: #df2531;
+      color: #efdfc5;
+      border: none;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      width: 100%;
+    }
+
+    .btn-registrar:hover {
+      background-color: #b51d27;
+    }
+
+    .volver {
+      display: block;
+      text-align: center;
+      margin-top: 15px;
+      color: #df2531;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .volver:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <div class="container-nav">
+        <div class="logo">
+          <a href="index.html">
+            <img src="../../General/Recursos/imagenes/logoUAO_WebSite.png" alt="Logo UAO" class="logo-img" />
+          </a>
+        </div>
+        <ul class="menu">
+          <li><a href="index.html#proximos-eventos">Próximos eventos</a></li>
+          <li><a href="index.html#talleres">Talleres</a></li>
+          <li><a href="index.html#testimonios">Testimonios</a></li>
+        </ul>
+        <a href="login.html" class="btn-ingresar">Ingresar</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="form-container">
+      <h1 id="evento-nombre">Registro de evento</h1>
+      <p><strong>Fecha:</strong> <span id="evento-fecha">...</span> | <strong>Lugar:</strong> <span id="evento-lugar">...</span></p>
+
+      <form id="form-registro">
+        <label for="codigo">Código de estudiante</label>
+        <input type="text" id="codigo" name="codigo" placeholder="Ej: 2223456" required>
+
+        <label for="nombre">Nombre completo</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+
+        <label for="correo">Correo institucional</label>
+        <input type="email" id="correo" name="correo" placeholder="tucorreo@uao.edu.co" required>
+
+        <label for="edad">Edad</label>
+        <input type="number" id="edad" name="edad" min="16" max="100" required>
+
+        <label for="facultad">Facultad</label>
+        <select id="facultad" name="facultad" required>
+          <option value="">Selecciona una facultad</option>
+          <option value="ingenieria">Facultad de Ingeniería</option>
+          <option value="economicas">Facultad de Ciencias Económicas y Administrativas</option>
+          <option value="comunicacion">Facultad de Comunicación y Ciencias Sociales</option>
+          <option value="humanidades">Facultad de Humanidades y Artes</option>
+          <option value="salud">Facultad de Salud y Rehabilitación</option>
+        </select>
+
+        <label for="carrera">Carrera</label>
+        <select id="carrera" name="carrera" required>
+          <option value="">Selecciona tu carrera</option>
+        </select>
+
+        <label for="expectativas">Expectativas (opcional)</label>
+        <textarea id="expectativas" name="expectativas" placeholder="¿Qué esperas del evento?"></textarea>
+
+        <button type="submit" class="btn-registrar">Registrar asistencia</button>
+      </form>
+
+      <a href="index.html" class="volver">← Volver al inicio</a>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container-footer">
+      <div class="footer-info">
+        <p>© 2025 Universidad Autónoma de Occidente - Todos los derechos reservados</p>
+        <p>Av. Simón Bolívar Calle 22 No 49-51, Cali, Colombia</p>
+        <p>Teléfono: +57 (2) 555 1234</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Carreras según facultad
+    const carrerasPorFacultad = {
+      ingenieria: [
+        "Ingeniería Multimedia",
+        "Ingeniería Electrónica y Telecomunicaciones",
+        "Ingeniería Mecatrónica",
+        "Ingeniería Biomédica",
+        "Ingeniería Industrial",
+        "Ingeniería Ambiental y Sanitaria"
+      ],
+      economicas: [
+        "Administración de Empresas",
+        "Contaduría Pública",
+        "Economía y Negocios Internacionales",
+        "Mercadeo y Negocios Internacionales"
+      ],
+      comunicacion: [
+        "Comunicación Social - Periodismo",
+        "Publicidad y Mercadeo",
+        "Diseño de la Comunicación Gráfica"
+      ],
+      humanidades: [
+        "Arquitectura",
+        "Diseño Industrial",
+        "Diseño de Moda"
+      ],
+      salud: [
+        "Psicología",
+        "Fisioterapia",
+        "Terapia Ocupacional"
+      ]
+    };
+
+    const facultadSelect = document.getElementById("facultad");
+    const carreraSelect = document.getElementById("carrera");
+
+    facultadSelect.addEventListener("change", function() {
+      const facultad = this.value;
+      carreraSelect.innerHTML = '<option value="">Selecciona tu carrera</option>';
+
+      if (facultad && carrerasPorFacultad[facultad]) {
+        carrerasPorFacultad[facultad].forEach(carrera => {
+          const option = document.createElement("option");
+          option.value = carrera;
+          option.textContent = carrera;
+          carreraSelect.appendChild(option);
+        });
+      }
+    });
+
+    // Cargar info del evento desde los parámetros
+    document.addEventListener("DOMContentLoaded", () => {
+      const params = new URLSearchParams(window.location.search);
+      const nombre = params.get("nombre");
+      const fecha = params.get("fecha");
+      const lugar = params.get("lugar");
+
+      if (nombre) document.getElementById("evento-nombre").textContent = nombre;
+      if (fecha) document.getElementById("evento-fecha").textContent = fecha;
+      if (lugar) document.getElementById("evento-lugar").textContent = lugar;
+    });
+
+    // Mensaje al registrar
+    document.getElementById("form-registro").addEventListener("submit", (e) => {
+      e.preventDefault();
+      alert("✅ Registro exitoso para el evento " + document.getElementById("evento-nombre").textContent + "!");
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
+
