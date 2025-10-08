@@ -55,12 +55,18 @@ const getEstadoEvento = (evento) => {
     const ahora = new Date(); 
     const [anio, mes, dia] = evento.fecha ? evento.fecha.split('-').map(Number) : [0,0,0]; 
     
-    if (!evento.fecha) {
-        return { texto: "En curso", clase: "en-curso" }; 
+    if (!evento.fecha && !evento.frecuencia) {
+        return { texto: "No disponible", clase: "finalizado" }; // Caso por defecto/error
+    }
+    
+    if (evento.frecuencia) {
+        // Los talleres (frecuencia) se consideran 'Próximamente' o 'En curso' si la fecha no es relevante
+        return { texto: "Abierto", clase: "proximamente" };
     }
 
     const crearFechaConHora = (hora24) => {
         const [horas, minutos] = hora24.split(':').map(Number);
+        // El mes en JS es 0-indexado, por eso es (mes - 1)
         return new Date(anio, mes - 1, dia, horas, minutos);
     };
 
@@ -99,46 +105,73 @@ function renderizarDetalle(evento) {
     document.getElementById('meta-lugar').textContent = evento.lugar;
     
     let fechaHoraDisplay = '';
-    
+    let fechaParaRegistro = ''; // Variable para usar en el CTA
+
     if (evento.fecha) { // Es un EVENTO
         const fechaFormateada = evento.fecha.split('-').reverse().join('-'); // 29-09-2025
         const horaDisplay = `${formatHora12H(evento.hora_inicio)} - ${formatHora12H(evento.hora_fin)}`;
         
         fechaHoraDisplay = `${fechaFormateada} · ${horaDisplay}`;
+        fechaParaRegistro = `${fechaFormateada} (${horaDisplay})`;
 
     } else if (evento.frecuencia) { // Es un TALLER
         const horaDisplay = `${formatHora12H(evento.hora_inicio)} - ${formatHora12H(evento.hora_fin)}`;
         fechaHoraDisplay = `${evento.frecuencia} (${evento.dia}) · ${horaDisplay}`;
+        fechaParaRegistro = `${evento.frecuencia}, ${evento.dia} (${horaDisplay})`;
     }
     
     document.getElementById('meta-fechahora').textContent = fechaHoraDisplay;
 
     // --- Llenar Descripción Larga ---
     const descContainer = document.getElementById('detalle-descripcion');
-    descContainer.innerHTML = ''; // Limpiar el contenido de placeholder
+    descContainer.innerHTML = ''; 
     
     const descripcion = evento.descripcion_larga; 
     
     if (Array.isArray(descripcion)) {
-        // Si la descripción es un array de párrafos, crear un <p> por cada uno
         descripcion.forEach(parrafo => {
             const p = document.createElement('p');
             p.textContent = parrafo;
             descContainer.appendChild(p);
         });
     } else {
-        // Si no existe o es un string simple
          const p = document.createElement('p');
          p.textContent = descripcion || "Descripción extendida no disponible. Consulte los canales oficiales de la UAO.";
          descContainer.appendChild(p);
     }
     
-    // --- Enlace de Inscripción (CTA) ---
+    // ===========================================
+    // --- Enlace de Inscripción (CTA) - CAMBIOS CLAVE ---
+    // ===========================================
     const ctaLink = document.getElementById('detalle-cta');
-    if (evento.enlace_inscripcion) {
+
+    // 1. Verificar si hay un enlace de inscripción EXTERNO
+    if (evento.enlace_inscripcion && evento.enlace_inscripcion.startsWith('http')) {
+        // Si es una URL externa, la usa directamente
         ctaLink.href = evento.enlace_inscripcion;
-        ctaLink.style.display = 'inline-block'; // Mostrar el botón
+        ctaLink.style.display = 'inline-block';
+        
+    } else if (estado.texto !== "Finalizado") {
+        // 2. Si no hay URL externa y el evento NO ha finalizado, redirigimos al formulario interno
+
+        // Preparar los parámetros para registro.html
+        const params = new URLSearchParams();
+        
+        // Adjuntamos el nombre, lugar y la cadena de fecha/frecuencia
+        params.append('nombre', encodeURIComponent(evento.nombre));
+        params.append('lugar', encodeURIComponent(evento.lugar));
+        params.append('fecha', encodeURIComponent(fechaParaRegistro));
+        
+        // Construir la URL completa: registro.html?nombre=...&lugar=...&fecha=...
+        const urlRegistro = `registro.html?${params.toString()}`;
+        
+        ctaLink.href = urlRegistro;
+        ctaLink.style.display = 'inline-block';
+        
     } else {
-        ctaLink.style.display = 'none'; // Ocultar si no hay enlace
+         // Si está Finalizado y no hay enlace externo, deshabilitamos
+         ctaLink.href = '#';
+         ctaLink.textContent = "Evento Finalizado";
+         // Opcional: Podrías cambiar la clase para deshabilitar el color.
     }
 }

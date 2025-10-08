@@ -119,6 +119,9 @@
     <div class="form-container">
       <h1 id="evento-nombre">Registro de evento</h1>
       <p><strong>Fecha:</strong> <span id="evento-fecha">...</span> | <strong>Lugar:</strong> <span id="evento-lugar">...</span></p>
+      <p id="conteo-inscritos" style="text-align: center; color: #333; font-weight: 600;">
+        0 personas inscritas.
+      </p>
 
       <form id="form-registro">
         <label for="codigo">Código de estudiante</label>
@@ -224,24 +227,104 @@
       }
     });
 
-    // Cargar info del evento desde los parámetros
     document.addEventListener("DOMContentLoaded", () => {
-      const params = new URLSearchParams(window.location.search);
-      const nombre = params.get("nombre");
-      const fecha = params.get("fecha");
-      const lugar = params.get("lugar");
+    // 1. Lógica de carga de carreras (mantenemos esto)
+    facultadSelect.addEventListener("change", function() {
+        // ... tu código de llenado de carreras ...
+        const facultad = this.value;
+        carreraSelect.innerHTML = '<option value="">Selecciona tu carrera</option>';
 
-      if (nombre) document.getElementById("evento-nombre").textContent = nombre;
-      if (fecha) document.getElementById("evento-fecha").textContent = fecha;
-      if (lugar) document.getElementById("evento-lugar").textContent = lugar;
+        if (facultad && carrerasPorFacultad[facultad]) {
+            carrerasPorFacultad[facultad].forEach(carrera => {
+                const option = document.createElement("option");
+                option.value = carrera;
+                option.textContent = carrera;
+                carreraSelect.appendChild(option);
+            });
+        }
     });
 
-    // Mensaje al registrar
+
+    // 2. Lógica para cargar info del evento desde los parámetros (mantenemos y mejoramos para obtener la ID)
+    const params = new URLSearchParams(window.location.search);
+    
+    const nombreCodificado = params.get("nombre");
+    const fechaCodificada = params.get("fecha");
+    const lugarCodificado = params.get("lugar");
+    
+    const nombre = nombreCodificado ? decodeURIComponent(nombreCodificado) : '';
+    const fecha = fechaCodificada ? decodeURIComponent(fechaCodificada) : '';
+    const lugar = lugarCodificado ? decodeURIComponent(lugarCodificado) : '';
+
+    if (nombre) document.getElementById("evento-nombre").textContent = nombre;
+    if (fecha) document.getElementById("evento-fecha").textContent = fecha;
+    if (lugar) document.getElementById("evento-lugar").textContent = lugar;
+
+    // --- NUEVA LÓGICA DE CONTEO Y VALIDACIÓN ---
+    
+    // Generamos una ID simple para el evento (clave de almacenamiento)
+    // Usamos el nombre (o la URL completa si el nombre es ambiguo) para la clave de localStorage
+    const eventoID_LocalStorage = "REGISTROS_" + nombre.replace(/\s/g, '_').toUpperCase();
+
+    // Función para obtener los registros existentes
+    const obtenerRegistros = () => {
+        const registrosJSON = localStorage.getItem(eventoID_LocalStorage);
+        return registrosJSON ? JSON.parse(registrosJSON) : [];
+    };
+
+    // Función para actualizar el contador en el HTML
+    const actualizarContador = () => {
+        const registros = obtenerRegistros();
+        const contadorElement = document.getElementById("conteo-inscritos");
+        if (contadorElement) {
+            contadorElement.textContent = `${registros.length} personas inscritas.`;
+        }
+    };
+    
+    // Actualizar el contador al cargar la página
+    actualizarContador();
+
+
+    // 3. Manejo del envío del formulario (VALIDACIÓN Y GUARDADO)
     document.getElementById("form-registro").addEventListener("submit", (e) => {
-      e.preventDefault();
-      alert("✅ Registro exitoso para el evento " + document.getElementById("evento-nombre").textContent + "!");
-      e.target.reset();
+        e.preventDefault(); // Detenemos el envío para procesarlo localmente
+        
+        const form = e.target;
+        const nuevoRegistro = {
+            codigo: form.codigo.value,
+            nombre: form.nombre.value,
+            correo: form.correo.value,
+            edad: form.edad.value,
+            facultad: form.facultad.value,
+            carrera: form.carrera.value,
+            expectativas: form.expectativas.value,
+            timestamp: new Date().toISOString() // Para saber cuándo se registró
+        };
+        
+        const registrosActuales = obtenerRegistros();
+        
+        // --- VALIDACIÓN CLAVE: No permitir códigos duplicados ---
+        const yaExiste = registrosActuales.some(registro => registro.codigo === nuevoRegistro.codigo);
+
+        if (yaExiste) {
+            alert("❌ ¡Error! Este código de estudiante ya está registrado para este evento.");
+            return; // Detener el proceso
+        }
+
+        // Si no existe, agregamos el nuevo registro
+        registrosActuales.push(nuevoRegistro);
+        
+        // Guardar la lista actualizada en localStorage
+        localStorage.setItem(eventoID_LocalStorage, JSON.stringify(registrosActuales));
+
+        // Mostrar éxito y limpiar
+        alert(`✅ ¡Registro exitoso para ${nombre}! Tu código ${nuevoRegistro.codigo} ha sido guardado.`);
+        
+        // Limpiar el formulario y actualizar el contador
+        form.reset();
+        actualizarContador();
     });
+});
   </script>
 </body>
 </html>
