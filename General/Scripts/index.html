@@ -49,18 +49,22 @@
     <main class="main-content container">
     
     <section class="content-slider" id="objetivo-principal">
-        <div class="section-header">
-            <h2>Próximos eventos (Slider)</h2>
-            <button class="btn-secondary">Explorar todos</button>
+    <div class="section-header">
+        <h2>Próximos eventos (Slider)</h2>
+        
+        <div class="filtro-container">
+            <label for="filtro-tipo">Filtrar por tipo:</label>
+            <select id="filtro-tipo" class="btn-secondary">
+                <option value="todos">Mostrar todos</option>
+                </select>
         </div>
-        <div class="cards carousel-container" id="eventos-container">
+        <button class="btn-secondary">Explorar todos</button>
+    </div>
+    <div class="cards carousel-container" id="eventos-container">
         </div>
-        <div class="carousel-indicators">
-            <div class="indicator"></div>
-            <div class="indicator active"></div>
-            <div class="indicator"></div>
+    <div class="carousel-indicators">
         </div>
-    </section>
+</section>
 
     <section class="intermedia">
         <h2>Compromiso UAO</h2>

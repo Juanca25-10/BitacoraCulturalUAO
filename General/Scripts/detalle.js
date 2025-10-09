@@ -1,48 +1,20 @@
 // detalle.js
-document.addEventListener('DOMContentLoaded', () => {
-    // 1. Obtener el ID (slug) de la URL
-    const params = new URLSearchParams(window.location.search);
-    const eventoId = params.get('id');
 
-    if (!eventoId) {
-        document.getElementById('detalle-nombre').textContent = "Error: ID de evento no encontrado.";
-        return; 
-    }
+// =========================================================
+// === FUNCIONES DE UTILIDAD (Fuera de DOMContentLoaded) ===
+// =========================================================
 
-    // 2. Cargar el JSON
-    fetch('eventos.json')
-        .then(response => response.json())
-        .then(data => {
-            
-            // Reutilizamos la función del script.js para crear el slug
-            const crearSlug = (nombre) => {
-                return nombre.toLowerCase()
-                    .normalize("NFD") 
-                    .replace(/[\u0300-\u036f]/g, "")
-                    .replace(/[^a-z0-9\s-]/g, "") 
-                    .trim()
-                    .replace(/\s+/g, "-"); 
-            };
-            
-            // Asignar IDs a todos los eventos en la carga para la búsqueda
-            data.eventos.forEach(item => {
-                item.id = crearSlug(item.nombre);
-            });
-            
-            // Buscar el evento usando el ID de la URL
-            const evento = data.eventos.find(item => item.id === eventoId);
+// Función CRÍTICA para crear un ID (slug) consistente.
+const crearSlug = (nombre) => {
+    return nombre.toLowerCase()
+        .normalize("NFD") 
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9\s-]/g, "") 
+        .trim()
+        .replace(/\s+/g, "-"); 
+};
 
-            if (evento) {
-                renderizarDetalle(evento);
-            } else {
-                document.getElementById('detalle-nombre').textContent = `Error: El evento '${eventoId}' no existe.`;
-            }
-        })
-        .catch(error => console.error('Error al cargar la data del evento:', error));
-});
-
-
-// Funciones de Utilidad (copiadas de script.js)
+// Función para formatear hora 24H a formato legible (ej: "18:30" -> "6:30 p.m.")
 const formatHora12H = (hora24) => {
     const [horas, minutos] = hora24.split(':').map(Number);
     const ampm = horas >= 12 ? 'p.m.' : 'a.m.';
@@ -50,23 +22,21 @@ const formatHora12H = (hora24) => {
     return `${hora12}:${minutos.toString().padStart(2, '0')} ${ampm}`;
 };
 
+// Función para determinar el estado de un evento
 const getEstadoEvento = (evento) => {
-    // Lógica completa de estado copiada de script.js para ser consistente
     const ahora = new Date(); 
     const [anio, mes, dia] = evento.fecha ? evento.fecha.split('-').map(Number) : [0,0,0]; 
     
     if (!evento.fecha && !evento.frecuencia) {
-        return { texto: "No disponible", clase: "finalizado" }; // Caso por defecto/error
+        return { texto: "No disponible", clase: "finalizado" }; 
     }
     
     if (evento.frecuencia) {
-        // Los talleres (frecuencia) se consideran 'Próximamente' o 'En curso' si la fecha no es relevante
         return { texto: "Abierto", clase: "proximamente" };
     }
 
     const crearFechaConHora = (hora24) => {
         const [horas, minutos] = hora24.split(':').map(Number);
-        // El mes en JS es 0-indexado, por eso es (mes - 1)
         return new Date(anio, mes - 1, dia, horas, minutos);
     };
 
@@ -82,96 +52,146 @@ const getEstadoEvento = (evento) => {
     }
 };
 
+// =========================================================
+// === LÓGICA PRINCIPAL (DOM Content Loaded) ================
+// =========================================================
 
-// 4. Función para renderizar la información
+document.addEventListener('DOMContentLoaded', () => {
+    
+    const params = new URLSearchParams(window.location.search);
+    const eventoId = params.get('id');
+
+    if (!eventoId) {
+        // En caso de que se abra la página sin '?id=...'
+        document.getElementById('detalle-nombre').textContent = "Error: ID de evento no encontrado en la URL.";
+        return; 
+    }
+
+    fetch('eventos.json')
+    .then(response => response.json())
+    .then(data => {
+        
+        // El ID de la URL (eventoId) debe coincidir con el ID fijo del JSON.
+        // NO VOLVEMOS A CALCULAR EL SLUG AQUÍ.
+        
+        // 1. Buscar el evento usando el ID de la URL
+        const evento = data.eventos.find(item => item.id === eventoId);
+
+        if (evento) {
+            renderizarDetalle(evento);
+        } else {
+            // Mensaje de error si el ID no coincide con ningún evento
+            document.getElementById('detalle-nombre').textContent = `Error: El evento '${eventoId}' no existe.`;
+        }
+    })
+    .catch(error => console.error('Error al cargar la data del evento:', error));
+});
+
+
+// =========================================================
+// === FUNCIÓN DE RENDERIZADO ===============================
+// =========================================================
+
 function renderizarDetalle(evento) {
     
     // --- Llenar Título y Cabecera ---
     document.getElementById('detalle-nombre').textContent = evento.nombre;
-    document.getElementById('detalle-titulo-pagina').textContent = `${evento.nombre} | UAO`;
+    
+    // Asumiendo que tienes un <title id="detalle-titulo-pagina"></title>
+    const tituloPagina = document.getElementById('detalle-titulo-pagina');
+    if (tituloPagina) {
+        tituloPagina.textContent = `${evento.nombre} | UAO`;
+    }
 
     // --- Imagen de Fondo y Estado ---
     const imagenDiv = document.getElementById('detalle-imagen');
     if (evento.imagen_path) {
         imagenDiv.style.backgroundImage = `url('${evento.imagen_path}')`;
+        imagenDiv.style.backgroundSize = 'cover'; 
+        imagenDiv.style.backgroundPosition = 'center';
     }
 
     const estado = getEstadoEvento(evento);
     const estadoElement = document.getElementById('detalle-estado');
-    estadoElement.textContent = estado.texto;
-    estadoElement.classList.add(estado.clase);
+    if (estadoElement) {
+        estadoElement.textContent = estado.texto;
+        estadoElement.classList.add(estado.clase);
+    }
 
     // --- Llenar Fecha, Hora y Lugar ---
-    document.getElementById('meta-lugar').textContent = evento.lugar;
+    const metaLugar = document.getElementById('meta-lugar');
+    if (metaLugar) metaLugar.textContent = evento.lugar;
     
     let fechaHoraDisplay = '';
-    let fechaParaRegistro = ''; // Variable para usar en el CTA
+    let fechaParaRegistro = ''; // Cadena formateada para el formulario de registro
 
-    if (evento.fecha) { // Es un EVENTO
-        const fechaFormateada = evento.fecha.split('-').reverse().join('-'); // 29-09-2025
+    if (evento.fecha) { // Es un EVENTO único
+        const fechaFormateada = evento.fecha.split('-').reverse().join('-');
         const horaDisplay = `${formatHora12H(evento.hora_inicio)} - ${formatHora12H(evento.hora_fin)}`;
         
         fechaHoraDisplay = `${fechaFormateada} · ${horaDisplay}`;
         fechaParaRegistro = `${fechaFormateada} (${horaDisplay})`;
 
-    } else if (evento.frecuencia) { // Es un TALLER
+    } else if (evento.frecuencia) { // Es un TALLER con frecuencia
         const horaDisplay = `${formatHora12H(evento.hora_inicio)} - ${formatHora12H(evento.hora_fin)}`;
         fechaHoraDisplay = `${evento.frecuencia} (${evento.dia}) · ${horaDisplay}`;
         fechaParaRegistro = `${evento.frecuencia}, ${evento.dia} (${horaDisplay})`;
     }
     
-    document.getElementById('meta-fechahora').textContent = fechaHoraDisplay;
+    const metaFechaHora = document.getElementById('meta-fechahora');
+    if (metaFechaHora) metaFechaHora.textContent = fechaHoraDisplay;
 
     // --- Llenar Descripción Larga ---
     const descContainer = document.getElementById('detalle-descripcion');
-    descContainer.innerHTML = ''; 
-    
-    const descripcion = evento.descripcion_larga; 
-    
-    if (Array.isArray(descripcion)) {
-        descripcion.forEach(parrafo => {
+    if (descContainer) {
+        descContainer.innerHTML = ''; 
+        const descripcion = evento.descripcion_larga; 
+        
+        if (Array.isArray(descripcion)) {
+            descripcion.forEach(parrafo => {
+                const p = document.createElement('p');
+                p.textContent = parrafo;
+                descContainer.appendChild(p);
+            });
+        } else {
             const p = document.createElement('p');
-            p.textContent = parrafo;
+            p.textContent = descripcion || "Descripción extendida no disponible. Consulte los canales oficiales de la UAO.";
             descContainer.appendChild(p);
-        });
-    } else {
-         const p = document.createElement('p');
-         p.textContent = descripcion || "Descripción extendida no disponible. Consulte los canales oficiales de la UAO.";
-         descContainer.appendChild(p);
+        }
     }
     
-    // ===========================================
-    // --- Enlace de Inscripción (CTA) - CAMBIOS CLAVE ---
-    // ===========================================
+    // --- Enlace de Inscripción (CTA) - CORRECCIÓN CLAVE ---
     const ctaLink = document.getElementById('detalle-cta');
 
-    // 1. Verificar si hay un enlace de inscripción EXTERNO
-    if (evento.enlace_inscripcion && evento.enlace_inscripcion.startsWith('http')) {
-        // Si es una URL externa, la usa directamente
-        ctaLink.href = evento.enlace_inscripcion;
+    if (ctaLink) {
+        // Si tiene un enlace externo (ej: formulario de Google, otro dominio)
+        if (evento.enlace_inscripcion && evento.enlace_inscripcion.startsWith('http')) {
+            ctaLink.href = evento.enlace_inscripcion;
+            ctaLink.target = "_blank"; // Abrir en pestaña nueva
+            ctaLink.textContent = "Inscríbete Ahora (Enlace Externo)";
+            
+        } else if (estado.texto === "Finalizado") {
+            // Evento finalizado, deshabilitar botón
+            ctaLink.href = '#';
+            ctaLink.textContent = "Evento Finalizado";
+            ctaLink.style.backgroundColor = '#ccc'; 
+            ctaLink.style.pointerEvents = 'none';
+            
+        } else {
+            // Redirigir al formulario interno (registro.html) con los parámetros
+            const paramsRegistro = new URLSearchParams();
+            
+            // Es crucial usar encodeURIComponent() para evitar caracteres raros en la URL
+            paramsRegistro.append('nombre', encodeURIComponent(evento.nombre));
+            paramsRegistro.append('lugar', encodeURIComponent(evento.lugar));
+            paramsRegistro.append('fecha', encodeURIComponent(fechaParaRegistro));
+            
+            const urlRegistro = `registro.html?${paramsRegistro.toString()}`;
+            
+            ctaLink.href = urlRegistro;
+            ctaLink.target = "_self"; // Abrir en la misma pestaña
+            ctaLink.textContent = "Inscríbete Aquí";
+        }
         ctaLink.style.display = 'inline-block';
-        
-    } else if (estado.texto !== "Finalizado") {
-        // 2. Si no hay URL externa y el evento NO ha finalizado, redirigimos al formulario interno
-
-        // Preparar los parámetros para registro.html
-        const params = new URLSearchParams();
-        
-        // Adjuntamos el nombre, lugar y la cadena de fecha/frecuencia
-        params.append('nombre', encodeURIComponent(evento.nombre));
-        params.append('lugar', encodeURIComponent(evento.lugar));
-        params.append('fecha', encodeURIComponent(fechaParaRegistro));
-        
-        // Construir la URL completa: registro.html?nombre=...&lugar=...&fecha=...
-        const urlRegistro = `registro.html?${params.toString()}`;
-        
-        ctaLink.href = urlRegistro;
-        ctaLink.style.display = 'inline-block';
-        
-    } else {
-         // Si está Finalizado y no hay enlace externo, deshabilitamos
-         ctaLink.href = '#';
-         ctaLink.textContent = "Evento Finalizado";
-         // Opcional: Podrías cambiar la clase para deshabilitar el color.
     }
 }

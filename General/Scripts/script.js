@@ -9,89 +9,86 @@ document.addEventListener("DOMContentLoaded", () => {
         .then(data => {
             
             // --- Funciones de Utilidad ---
-
-            // Función para crear un ID único a partir del nombre (ej: "Café UAO" -> "cafe-uao")
+            // Las funciones crearSlug, getEstadoEvento, formatHora12H y aplicarImagenesDeFondo
+            // se mantienen iguales a las que ya tenías y se omiten aquí por brevedad,
+            // pero deben estar en tu archivo .js final.
+            
             const crearSlug = (nombre) => {
                 return nombre.toLowerCase()
-                    .normalize("NFD") // Quita tildes
+                    .normalize("NFD")
                     .replace(/[\u0300-\u036f]/g, "")
-                    .replace(/[^a-z0-9\s-]/g, "") // Quita caracteres especiales
+                    .replace(/[^a-z0-9\s-]/g, "")
                     .trim()
-                    .replace(/\s+/g, "-"); // Reemplaza espacios con guiones
+                    .replace(/\s+/g, "-");
             };
 
-            // Función para determinar el estado de un evento
-            const getEstadoEvento = (evento) => {
-                const ahora = new Date(); // Fecha y hora actuales
-                const [anio, mes, dia] = evento.fecha ? evento.fecha.split('-').map(Number) : [0,0,0]; 
-                
-                if (!evento.fecha) {
-                    return { texto: "En curso", clase: "en-curso" }; // Talleres siempre en curso
-                }
-
-                // Función simple para crear objeto Date usando el formato 24H
-                const crearFechaConHora = (hora24) => {
-                    const [horas, minutos] = hora24.split(':').map(Number);
-                    // Ojo: mes - 1 porque en JS los meses van de 0 a 11
-                    return new Date(anio, mes - 1, dia, horas, minutos);
-                };
-
-                const fechaInicio = crearFechaConHora(evento.hora_inicio);
-                const fechaFin = crearFechaConHora(evento.hora_fin);
-                
-                // Lógica de estado
-                if (ahora > fechaFin) {
-                    return { texto: "Finalizado", clase: "finalizado" };
-                } else if (ahora >= fechaInicio && ahora <= fechaFin) {
-                    return { texto: "En curso", clase: "en-curso" };
-                } else {
-                    return { texto: "Próximamente", clase: "proximamente" };
-                }
-            };
-
-            // Función para formatear hora 24H a formato legible (ej: "18:30" -> "6:30 p.m.")
             const formatHora12H = (hora24) => {
                 const [horas, minutos] = hora24.split(':').map(Number);
                 const ampm = horas >= 12 ? 'p.m.' : 'a.m.';
-                const hora12 = horas % 12 || 12; // Convierte 0 (medianoche) a 12
+                const hora12 = horas % 12 || 12;
                 return `${hora12}:${minutos.toString().padStart(2, '0')} ${ampm}`;
             };
 
-            // Función para inyectar imágenes de fondo
-            const aplicarImagenesDeFondo = () => {
-                const placeholders = document.querySelectorAll('.img-placeholder[data-imagen-url]');
+            const getEstadoEvento = (evento) => {
+                 const ahora = new Date();
+                 const [anio, mes, dia] = evento.fecha ? evento.fecha.split('-').map(Number) : [0,0,0]; 
+                 
+                 if (!evento.fecha) {
+                     return { texto: "En curso", clase: "en-curso" };
+                 }
 
-                placeholders.forEach(placeholder => {
-                    const imageUrl = placeholder.getAttribute('data-imagen-url');
-                    if (imageUrl) {
-                        placeholder.style.backgroundImage = `url('${imageUrl}')`;
-                        placeholder.style.backgroundSize = 'cover';
-                        placeholder.style.backgroundPosition = 'center';
-                    }
-                });
-            };
+                 const crearFechaConHora = (hora24) => {
+                     const [horas, minutos] = hora24.split(':').map(Number);
+                     return new Date(anio, mes - 1, dia, horas, minutos);
+                 };
+
+                 const fechaInicio = crearFechaConHora(evento.hora_inicio);
+                 const fechaFin = crearFechaConHora(evento.hora_fin);
+                 
+                 if (ahora > fechaFin) {
+                     return { texto: "Finalizado", clase: "finalizado" };
+                 } else if (ahora >= fechaInicio && ahora <= fechaFin) {
+                     return { texto: "En curso", clase: "en-curso" };
+                 } else {
+                     return { texto: "Próximamente", clase: "proximamente" };
+                 }
+             };
             
+             const aplicarImagenesDeFondo = () => {
+                 const placeholders = document.querySelectorAll('.img-placeholder[data-imagen-url]');
+                 placeholders.forEach(placeholder => {
+                     const imageUrl = placeholder.getAttribute('data-imagen-url');
+                     if (imageUrl) {
+                         placeholder.style.backgroundImage = `url('${imageUrl}')`;
+                         placeholder.style.backgroundSize = 'cover';
+                         placeholder.style.backgroundPosition = 'center';
+                     }
+                 });
+             };
+
+
             // --- Renderizado de Eventos y Talleres ---
 
-            // Asignamos el ID (slug) a cada elemento del JSON antes de filtrar
             data.eventos.forEach(item => {
-                item.id = crearSlug(item.nombre);
+                if (!item.id) {
+                    item.id = crearSlug(item.nombre);
+                }
             });
 
-            // Filtramos eventos (tienen fecha) y talleres (tienen frecuencia)
-            const eventos = data.eventos.filter(e => e.fecha);
-            const talleres = data.eventos.filter(e => e.frecuencia);
+            const eventos = data.eventos.filter(e => e.categoria_principal === 'Evento Único');
+            const talleres = data.eventos.filter(e => e.categoria_principal === 'Taller Permanente');
 
-            // Insertar eventos
             const eventosContainer = document.getElementById("eventos-container");
+            const talleresContainer = document.getElementById("talleres-container");
+
+            // Función de renderizado para eventos (cards)
             eventos.forEach(evento => {
                 const card = document.createElement("article");
                 card.classList.add("card");
+                // **CLAVE DE FILTRADO**
+                card.setAttribute('data-tipo', evento.tipo); 
                 
-                // === CAMBIO CRÍTICO: Usamos el ID para apuntar al archivo dinámico ===
                 const url = `evento-detalle.html?id=${evento.id}`;
-                // ====================================================================
-                
                 const horaDisplay = `${formatHora12H(evento.hora_inicio)} - ${formatHora12H(evento.hora_fin)}`;
                 const fechaDisplay = evento.fecha.split('-').reverse().join('-');
                 const estado = getEstadoEvento(evento);
@@ -102,6 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             <span class="estado-evento ${estado.clase}">${estado.texto}</span>
                         </div>
                         <h3>${evento.nombre}</h3>
+                        <p class="tipo-tag">${evento.tipo}</p>
                         <p>
                             ${fechaDisplay} · ${horaDisplay} ·
                             <br>${evento.lugar}
@@ -111,21 +109,21 @@ document.addEventListener("DOMContentLoaded", () => {
                 eventosContainer.appendChild(card);
             });
 
-            // Insertar talleres
-            const talleresContainer = document.getElementById("talleres-container");
+            // Función de renderizado para talleres (stories/aside)
             talleres.forEach(taller => {
                 const story = document.createElement("article");
                 story.classList.add("story");
+                // **CLAVE DE FILTRADO**
+                story.setAttribute('data-tipo', taller.tipo);
 
-                // Usamos el ID como parámetro de URL
                 const url = `evento-detalle.html?id=${taller.id}`; 
-
                 const horaDisplay = `${formatHora12H(taller.hora_inicio)} - ${formatHora12H(taller.hora_fin)}`;
 
                 story.innerHTML = `
                     <a href="${url}">
                         <div class="img-placeholder" data-imagen-url="${taller.imagen_path}"></div>
                         <h3>${taller.nombre}</h3>
+                        <p class="tipo-tag">${taller.tipo}</p>
                         <p>
                             ${taller.dia} · ${horaDisplay} ·
                             <br>${taller.lugar}
@@ -135,13 +133,50 @@ document.addEventListener("DOMContentLoaded", () => {
                 talleresContainer.appendChild(story);
             });
             
-            // Aplicamos las imágenes después de que se inserta el HTML
             aplicarImagenesDeFondo();
             
+            // ------------------------------------------------------------------
+            // --- IMPLEMENTACIÓN LÓGICA DE FILTRADO ---
+            // ------------------------------------------------------------------
+            
+            const filtroSelect = document.getElementById('filtro-tipo');
+            
+            // 1. Obtener y llenar el menú desplegable con tipos únicos
+            const todosLosTipos = data.eventos.map(e => e.tipo);
+            const tiposUnicos = [...new Set(todosLosTipos)].sort();
+
+            tiposUnicos.forEach(tipo => {
+                const option = document.createElement('option');
+                option.value = tipo;
+                option.textContent = tipo;
+                filtroSelect.appendChild(option);
+            });
+
+            // 2. Escuchar el cambio en el menú de filtrado
+            filtroSelect.addEventListener('change', (e) => {
+                const tipoSeleccionado = e.target.value; 
+                
+                // Selecciona todos los elementos en ambas secciones (eventos y talleres)
+                const todosLosElementos = document.querySelectorAll('[data-tipo]'); 
+
+                todosLosElementos.forEach(elemento => {
+                    const tipoElemento = elemento.getAttribute('data-tipo');
+                    
+                    if (tipoSeleccionado === 'todos' || tipoElemento === tipoSeleccionado) {
+                        // Mostrar: si es 'todos' o el tipo coincide
+                        elemento.style.display = ''; 
+                    } else {
+                        // Ocultar
+                        elemento.style.display = 'none'; 
+                    }
+                });
+            });
+
             // --- Reemplazo de botones por enlaces ---
+            // (Esta sección la mantengo intacta)
 
             const btnExplorarTodos = document.querySelector("#objetivo-principal .btn-secondary");
-            if(btnExplorarTodos) {
+            if(btnExplorarTodos && btnExplorarTodos.tagName === 'BUTTON') { // Aseguramos que solo reemplace si es un botón
                 const linkExplorarTodos = document.createElement('a');
                 linkExplorarTodos.href = "todos-los-eventos.html";
                 linkExplorarTodos.target = "_blank";
@@ -151,7 +186,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             const btnVerMas = document.querySelector(".content-sidebar .btn-secondary");
-            if(btnVerMas) {
+            if(btnVerMas && btnVerMas.tagName === 'BUTTON') {
                 const linkVerMas = document.createElement('a');
                 linkVerMas.href = "todos-los-talleres.html";
                 linkVerMas.target = "_blank";

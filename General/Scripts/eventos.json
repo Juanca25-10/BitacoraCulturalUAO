@@ -2,6 +2,8 @@
   "universidad": "Universidad Autónoma de Occidente",
   "ciudad": "Cali, Colombia",
   "eventos": [
+    
+
     {
       "id": "integracion-biodiversidad",
       "nombre": "Integración de la biodiversidad en la planificación urbana",
@@ -9,11 +11,12 @@
       "hora_inicio": "10:00",
       "hora_fin": "10:45",
       "lugar": "Auditorio principal, Banco de la República (Cali)",
-      "tipo": "Académico - Semana de la Biodiversidad",
+      "tipo": "Patrimonio Natural", 
+      "categoria_principal": "Evento Único",
       "imagen_path": "../../General/Recursos/imagenes/integracion_biodiversidad.jpg",
       "descripcion_larga": [
         "Conferencia magistral que aborda la **importancia crítica de incluir la conservación y el manejo de la biodiversidad** en las políticas y planes de desarrollo urbano. Analizaremos cómo las áreas verdes urbanas y los corredores biológicos son esenciales para la resiliencia climática y la salud pública.",
-        "Se presentarán **modelos exitosos de ciudades latinoamericanas y europeas** que han logrado una integración efectiva. El objetivo final es fomentar una visión territorial en el Valle del Cauca que vea la naturaleza no solo como un recurso, sino como un pilar fundamental para la calidad de vida y la sostenibilidad a largo plazo de Cali. Además, discutiremos los desafíos regulatorios y la necesidad de una gobernanza ambiental más robusta."
+        "Se presentarán **modelos exitosos de ciudades latinoamericanas y europeas** que han logrado una integración efectiva. El objetivo final es fomentar una visión territorial en el Valle del Cauca que vea la naturaleza no solo como un recurso, sino como un pilar fundamental para la calidad de vida y la sostenibilidad a largo plazo de Cali."
       ],
       "enlace_inscripcion": ""
     },
@@ -24,11 +27,12 @@
       "hora_inicio": "10:45",
       "hora_fin": "11:30",
       "lugar": "Auditorio principal, Banco de la República (Cali)",
-      "tipo": "Académico - Semana de la Biodiversidad",
+      "tipo": "Patrimonio Natural", 
+      "categoria_principal": "Evento Único",
       "imagen_path": "../../General/Recursos/imagenes/Integracion biodiversidad.jpg",
       "descripcion_larga": [
         "Este foro de alto nivel reúne a académicos, líderes comunitarios, expertos en sostenibilidad y representantes del sector público para discutir y consolidar el concepto de **'Biodiverciudad'** en el contexto de Cali. Se analizará cómo este nuevo paradigma busca armonizar el crecimiento urbano acelerado con la conservación activa de la naturaleza y los servicios ecosistémicos que la rodean.",
-        "Se explorarán **políticas públicas innovadoras**, casos de éxito nacionales e internacionales, y los desafíos de financiamiento para proyectos verdes. Contaremos con un panel de discusión clave que incluye la participación de la **Alcaldía de Cali**, ONGs ambientales y expertos de la UAO, buscando generar un plan de acción concreto y sostenible para los próximos años. El foro es una plataforma para el diálogo y la acción ciudadana."
+        "Se explorarán **políticas públicas innovadoras** y casos de éxito. Contaremos con un panel de discusión clave, buscando generar un plan de acción concreto y sostenible."
       ],
       "enlace_inscripcion": ""
     },
@@ -39,14 +43,33 @@
       "hora_inicio": "14:00",
       "hora_fin": "16:00",
       "lugar": "Teatrino del Teatro Municipal Enrique Buenaventura (Cali)",
-      "tipo": "Académico - Semana de la Biodiversidad",
+      "tipo": "Patrimonio Natural", 
+      "categoria_principal": "Evento Único",
       "imagen_path": "../../General/Recursos/imagenes/interaccion_uao_territorio.jpg",
       "descripcion_larga": [
-        "Un panel de discusión enfocado en la **responsabilidad social y ambiental de la academia**. Destacaremos los proyectos de investigación y extensión de la UAO que impactan directamente en la conservación de ecosistemas vitales para la región, como la protección de los **Farallones de Cali**, la cuenca del **Río Pance** y los humedales urbanos.",
-        "Docentes, investigadores y estudiantes presentarán sus más recientes hallazgos, demostrando cómo la universidad se vincula activamente en la solución de problemas ambientales del Valle del Cauca. Se mostrarán herramientas tecnológicas y metodologías participativas desarrolladas en la UAO para el monitoreo y la gestión de recursos naturales. Es una oportunidad para ver la ciencia aplicada al servicio del territorio."
+        "Un panel enfocado en la **responsabilidad social y ambiental de la academia**. Destacaremos los proyectos de investigación de la UAO que impactan directamente en la conservación de ecosistemas vitales para la región, como la protección de los **Farallones de Cali** y la cuenca del **Río Pance**.",
+        "Docentes, investigadores y estudiantes presentarán sus más recientes hallazgos. Es una oportunidad para ver la ciencia aplicada al servicio del territorio."
       ],
       "enlace_inscripcion": ""
     },
+    {
+      "id": "exploracion-humedal",
+      "nombre": "Expedición Guiada al Humedal de Navarro",
+      "fecha": "2025-10-19",
+      "hora_inicio": "08:00",
+      "hora_fin": "12:00",
+      "lugar": "Humedal El Cortijo / Navarro",
+      "tipo": "Patrimonio Natural", 
+      "categoria_principal": "Evento Único",
+      "imagen_path": "../../General/Recursos/imagenes/exploracion-humedal.jpg",
+      "descripcion_larga": [
+        "Una jornada de **ecoturismo y educación ambiental** en el corazón de los ecosistemas urbanos de Cali. Liderada por biólogos de la UAO, la expedición busca sensibilizar sobre la importancia de la conservación de los humedales como filtros naturales y refugios de vida silvestre.",
+        "El cupo es limitado e incluye transporte desde el campus. Se recomienda llevar ropa cómoda y binoculares para el avistamiento de aves."
+      ],
+      "enlace_inscripcion": ""
+    },
+    
+  
     {
       "id": "batallas-freestyle",
       "nombre": "Batallas de Freestyle",
@@ -54,11 +77,12 @@
       "hora_inicio": "17:30",
       "hora_fin": "19:30",
       "lugar": "Salón de Actividades, Bienestar Universitario UAO",
-      "tipo": "Cultural - Música",
+      "tipo": "Artes Escénicas", 
+      "categoria_principal": "Evento Único",
       "imagen_path": "../../General/Recursos/imagenes/batallas_freestyle.webp",
       "descripcion_larga": [
-        "¡Prepárate para la máxima exhibición de **ingenio y rapidez mental**! El evento reúne a los mejores MCs de la comunidad universitaria en una emocionante competencia de rimas improvisadas. La tarima se encenderá con batallas uno a uno, llenas de energía, ritmo, métrica y el espíritu vibrante de la cultura urbana.",
-        "Ven y apoya a tu gallo favorito, disfruta de la música en vivo y de la creatividad lírica que caracteriza al freestyle. Además de la competencia central, tendremos un *micrófono abierto* para que nuevos talentos puedan probar sus habilidades frente al público. ¡Una noche imperdible para los amantes del hip-hop y las palabras!"
+        "¡Prepárate para la máxima exhibición de **ingenio y rapidez mental**! Competencia de rimas improvisadas. La tarima se encenderá con batallas uno a uno, llenas de energía, ritmo, métrica y el espíritu vibrante de la cultura urbana.",
+        "Además de la competencia central, tendremos un *micrófono abierto* para que nuevos talentos puedan probar sus habilidades. ¡Una noche imperdible para los amantes del hip-hop y las palabras!"
       ],
       "enlace_inscripcion": ""
     },
@@ -69,11 +93,12 @@
       "hora_inicio": "18:00",
       "hora_fin": "20:00",
       "lugar": "Plazoleta Central, UAO",
-      "tipo": "Cultural - Encuentro artístico",
+      "tipo": "Artes Musicales", 
+      "categoria_principal": "Evento Único",
       "imagen_path": "../../General/Recursos/imagenes/cafe_uao.png",
       "descripcion_larga": [
-        "**Café UAO** es nuestro espacio mensual, relajado y acogedor, diseñado para el encuentro de la comunidad artística universitaria. Los estudiantes, profesores y egresados son bienvenidos a **compartir sus talentos** en diversas disciplinas: desde música acústica y *covers*, pasando por la declamación de poesía, hasta sesiones de *stand-up comedy* y microteatro. Es una vitrina cultural abierta a todas las expresiones.",
-        "Mientras el talento fluye, la comunidad puede disfrutar de un buen café, bebidas y *snacks* en la fresca atmósfera de la Plazoleta Central. Es la oportunidad perfecta para desconectarse de la rutina académica, conocer nuevos artistas y fortalecer los lazos culturales de la UAO. ¡Ven a compartir tu arte o simplemente a disfrutar de una noche bohemia!"
+        "**Café UAO** es nuestro espacio mensual, relajado y acogedor, para el encuentro de la comunidad artística universitaria. Estudiantes y egresados son bienvenidos a **compartir sus talentos** en diversas disciplinas: música acústica, poesía, *stand-up comedy* y microteatro.",
+        "Es la oportunidad perfecta para desconectarse de la rutina, conocer nuevos artistas y fortalecer los lazos culturales de la UAO. ¡Ven a compartir tu arte o simplemente a disfrutar de una noche bohemia!"
       ],
       "enlace_inscripcion": ""
     },
@@ -84,91 +109,148 @@
       "hora_inicio": "16:30",
       "hora_fin": "18:30",
       "lugar": "Centro Cultural y Deportivo UAO",
-      "tipo": "Cultural - Artes escénicas",
+      "tipo": "Artes Escénicas", 
+      "categoria_principal": "Evento Único",
       "imagen_path": "../../General/Recursos/imagenes/obra-teatro-estudiantil.jpg",
       "descripcion_larga": [
-        "**Gran estreno de la temporada teatral** del grupo de Bienestar Universitario. Se trata de una pieza teatral original, íntegramente creada e interpretada por el talento escénico de nuestros estudiantes. La obra de este semestre explora temas contemporáneos de identidad, las presiones sociales y la vida universitaria, presentados con una mezcla cautivadora de humor, drama y momentos reflexivos.",
-        "Te invitamos a sumergirte en esta experiencia que no solo demuestra el nivel artístico de nuestros alumnos, sino que también ofrece una visión profunda de los desafíos y triunfos de la juventud actual. **¡Una cita obligada para los amantes del buen teatro!** La entrada es libre, pero el aforo es limitado."
+        "**Gran estreno de la temporada teatral**. Pieza teatral original, íntegramente creada e interpretada por el talento escénico de nuestros estudiantes. La obra explora temas contemporáneos de identidad y las presiones sociales con una mezcla cautivadora de humor y drama.",
+        "Te invitamos a sumergirte en esta experiencia que no solo demuestra el nivel artístico de nuestros alumnos, sino que también ofrece una visión profunda de los desafíos y triunfos de la juventud actual."
       ],
       "enlace_inscripcion": ""
     },
     {
+      "id": "concierto-pop-rock",
+      "nombre": "Concierto Pop-Rock: Bandas UAO",
+      "fecha": "2025-11-08",
+      "hora_inicio": "19:00",
+      "hora_fin": "21:30",
+      "lugar": "Plazoleta de Bienestar, UAO",
+      "tipo": "Artes Musicales",
+      "categoria_principal": "Evento Único",
+      "imagen_path": "../../General/Recursos/imagenes/concierto-uao.jpg",
+      "descripcion_larga": [
+        "Un evento lleno de energía con las mejores bandas de rock y pop conformadas por estudiantes de la UAO. Desde covers de éxitos mundiales hasta composiciones originales, la noche estará dedicada a la música independiente y alternativa.",
+        "Una excelente oportunidad para disfrutar de la buena música, apoyar el talento local y cerrar la semana con el mejor ambiente en el campus."
+      ],
+      "enlace_inscripcion": ""
+    },
+    {
+      "id": "festival-gastronomico",
+      "nombre": "Festival Gastronómico: Sabores del Valle",
+      "fecha": "2025-11-15",
+      "hora_inicio": "11:00",
+      "hora_fin": "15:00",
+      "lugar": "Canchas Múltiples, UAO",
+      "tipo": "Patrimonio Cultural",
+      "categoria_principal": "Evento Único",
+      "imagen_path": "../../General/Recursos/imagenes/festival-gastronomico.jpg",
+      "descripcion_larga": [
+        "Una celebración de la **identidad gastronómica vallecaucana**. Este festival reúne a emprendedores, chefs y estudiantes para ofrecer una muestra de la cocina tradicional y contemporánea de la región, destacando ingredientes autóctonos y técnicas ancestrales.",
+        "Habrá *stands* de degustación, demostraciones culinarias en vivo y música folclórica. Es un espacio para redescubrir y valorar el patrimonio culinario de Cali y sus alrededores."
+      ],
+      "enlace_inscripcion": ""
+    },
+    
+
+    {
       "id": "improvisacion-teatral",
-      "nombre": "Improvisación Teatral",
+      "nombre": "Taller: Improvisación Teatral",
       "frecuencia": "Semanal",
       "dia": "Lunes",
       "hora_inicio": "16:00",
       "hora_fin": "19:00",
       "lugar": "Salón de Danzas, Centro Cultural y Deportivo UAO",
-      "tipo": "Taller formativo",
+      "tipo": "Artes Escénicas", 
+      "categoria_principal": "Taller Permanente",
       "imagen_path": "../../General/Recursos/imagenes/improvisacion_teatral.jpg",
       "descripcion_larga": [
-        "**El arte de crear en el momento**. Este taller ofrece una inmersión completa en las técnicas de la improvisación teatral. Es una disciplina fantástica para **desarrollar tu creatividad**, agilidad mental, escucha activa y la habilidad esencial para el trabajo en equipo, todo a través de juegos y ejercicios escénicos increíblemente dinámicos y divertidos.",
-        "Aprenderás a construir personajes y narrativas de la nada, a aceptar propuestas y a 'fallar rápido y con gracia'. No se requiere ninguna experiencia previa en teatro, solo ganas de soltarse y explorar tu potencial espontáneo. Las sesiones son prácticas, lúdicas y te dejarán con nuevas herramientas comunicativas aplicables a cualquier área de tu vida."
+        "**El arte de crear en el momento**. Este taller ofrece una inmersión completa en las técnicas de la improvisación teatral. Es una disciplina fantástica para **desarrollar tu creatividad**, agilidad mental y la habilidad esencial para el trabajo en equipo.",
+        "Aprenderás a construir personajes y narrativas de la nada. No se requiere ninguna experiencia previa, solo ganas de soltarse y explorar tu potencial espontáneo."
       ],
       "enlace_inscripcion": ""
     },
     {
       "id": "colectivo-fotografico",
-      "nombre": "Colectivo Fotográfico",
+      "nombre": "Taller: Colectivo Fotográfico",
       "frecuencia": "Semanal",
       "dia": "Miércoles",
       "hora_inicio": "17:00",
       "hora_fin": "19:00",
       "lugar": "Laboratorio de Lúdica y Creatividad, Sótano 2 UAO",
-      "tipo": "Taller formativo",
+      "tipo": "Artes Visuales", 
+      "categoria_principal": "Taller Permanente",
       "imagen_path": "../../General/Recursos/imagenes/colectivo_fotografico.jpg",
       "descripcion_larga": [
-        "**Captura la esencia de la UAO**. Únete a nuestro colectivo y adéntrate en el fascinante mundo de la fotografía. Las sesiones están diseñadas para que los participantes dominen técnicas clave de composición, manejo avanzado de la iluminación (natural y artificial) y los fundamentos del revelado digital y post-producción.",
-        "Este es un espacio ideal para estudiantes y miembros de la comunidad que desean llevar sus habilidades fotográficas de nivel *amateur* a un nivel semiprofesional. Trabajaremos en proyectos temáticos, documentaremos la vida universitaria y prepararemos material para futuras exposiciones. **Trae tu cámara** (o incluso tu celular avanzado) y tu pasión por la imagen."
+        "**Captura la esencia de la UAO**. Únete a nuestro colectivo y adéntrate en el fascinante mundo de la fotografía. Las sesiones están diseñadas para que los participantes dominen técnicas clave de composición, manejo avanzado de la iluminación y los fundamentos del revelado digital.",
+        "Este es un espacio ideal para estudiantes que desean llevar sus habilidades fotográficas de nivel *amateur* a un nivel semiprofesional. **Trae tu cámara** y tu pasión por la imagen."
       ],
       "enlace_inscripcion": ""
     },
     {
       "id": "bailes-urbanos",
-      "nombre": "Bailes Urbanos (Iniciación)",
+      "nombre": "Taller: Bailes Urbanos (Iniciación)",
       "frecuencia": "Semanal",
       "dia": "Martes y Jueves",
       "hora_inicio": "14:00",
       "hora_fin": "16:00",
       "lugar": "Salón de Danzas, Centro Cultural y Deportivo UAO",
-      "tipo": "Taller formativo",
+      "tipo": "Artes Escénicas", 
+      "categoria_principal": "Taller Permanente",
       "imagen_path": "../../General/Recursos/imagenes/bailes_urbanos.jpg",
       "descripcion_larga": [
-        "**¡Muévete al ritmo de la calle!** Este taller de iniciación te introduce a los estilos fundamentales de la danza urbana, incluyendo Hip-Hop, Locking, Popping y los movimientos básicos del Breaking. Las clases se centran en aprender los fundamentos rítmicos, desarrollar una coordinación sólida y **ganar confianza** para improvisar en el escenario o la pista de baile.",
-        "Es un espacio inclusivo donde no se requiere absolutamente ninguna experiencia previa; solo energía y ganas de aprender. Además de la técnica, exploramos la historia y la cultura detrás de cada estilo, entendiendo su impacto social. Un excelente *workout* y una forma divertida de expresión corporal."
+        "**¡Muévete al ritmo de la calle!** Este taller de iniciación te introduce a los estilos fundamentales de la danza urbana, incluyendo Hip-Hop, Locking, Popping y los movimientos básicos del Breaking.",
+        "Es un espacio inclusivo donde no se requiere absolutamente ninguna experiencia previa; solo energía y ganas de aprender. Un excelente *workout* y una forma divertida de expresión corporal."
       ],
       "enlace_inscripcion": ""
     },
     {
       "id": "ensamble-coral",
-      "nombre": "Ensamble Coral",
+      "nombre": "Taller: Ensamble Coral",
       "frecuencia": "Semanal",
       "dia": "Miércoles",
       "hora_inicio": "17:30",
       "hora_fin": "19:30",
       "lugar": "Salón de Actividades, Bienestar Universitario UAO",
-      "tipo": "Taller formativo",
+      "tipo": "Artes Musicales", 
+      "categoria_principal": "Taller Permanente",
       "imagen_path": "../../General/Recursos/imagenes/ensamble_coral.jpg",
       "descripcion_larga": [
-        "Si te apasiona el canto y la creación de **armonías vocales ricas y complejas**, este es tu espacio de desarrollo musical en la UAO. Trabajamos un repertorio diverso que abarca desde la música pop contemporánea y el folclore latinoamericano, hasta piezas clásicas y cantos a capela, buscando siempre la excelencia interpretativa.",
-        "Las sesiones se enfocan en técnicas de respiración, afinación y proyección vocal. Preparamos conciertos y presentaciones constantes para los eventos culturales más importantes de la universidad. No es necesario ser un profesional, solo tener oído musical y un gran compromiso. **¡Únete a nuestra voz y haz vibrar el campus!**"
+        "Si te apasiona el canto y la creación de **armonías vocales**, este es tu espacio de desarrollo musical en la UAO. Trabajamos un repertorio diverso que abarca desde la música pop hasta el folclore latinoamericano.",
+        "Las sesiones se enfocan en técnicas de respiración, afinación y proyección vocal. Preparamos conciertos y presentaciones constantes. ¡Únete a nuestra voz y haz vibrar el campus!"
       ],
       "enlace_inscripcion": ""
     },
     {
       "id": "orquesta-salsa",
-      "nombre": "Orquesta de Salsa",
+      "nombre": "Taller: Orquesta de Salsa",
       "frecuencia": "Semanal",
       "dia": "Viernes",
       "hora_inicio": "18:00",
       "hora_fin": "21:30",
       "lugar": "Salón Acústico, Bienestar Universitario UAO",
-      "tipo": "Taller formativo",
+      "tipo": "Artes Musicales", 
+      "categoria_principal": "Taller Permanente",
       "imagen_path": "../../General/Recursos/imagenes/orquesta_salsa.jpg",
       "descripcion_larga": [
-        "**El ritmo de Cali late en la UAO**. Este es un taller y una audición avanzada para músicos instrumentistas y vocalistas que desean formar parte de la orquesta oficial de salsa de la universidad. Es un compromiso serio con la música, centrado en el estudio de arreglos complejos, la improvisación en vivo y la cohesión de la banda.",
-        "Trabajamos en la interpretación de los **clásicos inolvidables y nuevos temas de la salsa caleña y mundial**, preparando presentaciones de alto calibre para eventos internos y externos. Se requiere experiencia previa en tu instrumento (percusión, vientos, bajo, piano o voz) y un profundo conocimiento del género. **¡Ven y demuestra tu sabor musical!**"
+        "**El ritmo de Cali late en la UAO**. Taller y audición avanzada para músicos instrumentistas y vocalistas que desean formar parte de la orquesta oficial de salsa. Centrado en el estudio de arreglos complejos y la improvisación en vivo.",
+        "Trabajamos en la interpretación de los **clásicos inolvidables y nuevos temas de la salsa caleña y mundial**. Se requiere experiencia previa en tu instrumento. **¡Ven y demuestra tu sabor musical!**"
+      ],
+      "enlace_inscripcion": ""
+    },
+    {
+      "id": "introduccion-ceramica",
+      "nombre": "Taller: Introducción a la Cerámica Artística",
+      "frecuencia": "Bimensual",
+      "dia": "Sábados",
+      "hora_inicio": "14:00",
+      "hora_fin": "17:00",
+      "lugar": "Taller de Artes Plásticas, Centro Cultural UAO",
+      "tipo": "Artes Visuales", 
+      "categoria_principal": "Taller Permanente",
+      "imagen_path": "../../General/Recursos/imagenes/taller-ceramica.jpg",
+      "descripcion_larga": [
+        "Un taller práctico para explorar el arte ancestral de la cerámica. Aprenderás las técnicas básicas de modelado, esmaltado y cocción para crear tus propias piezas utilitarias y decorativas. Es una actividad excelente para el desarrollo de la paciencia y la motricidad fina.",
+        "Todos los materiales están incluidos. No se necesita experiencia, solo las ganas de crear con tus manos y conectarte con este patrimonio artesanal."
       ],
       "enlace_inscripcion": ""
     }
