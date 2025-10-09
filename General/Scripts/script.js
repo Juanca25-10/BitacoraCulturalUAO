@@ -1,4 +1,104 @@
+// ==================================================================
+// --- 1. FUNCIÓN DE SONIDO DE CLIC ---
+// ==================================================================
+
+// Variable global para el sonido (se carga al inicio)
+// NOTA: Ajusta la ruta si es necesario.
+const clickSound = new Audio('../../General/Recursos/sonidos/button-press-382713.mp3');
+
+// Función para reproducir el sonido
+const playClickSound = () => {
+    // Reinicia el tiempo para permitir que se reproduzca en clics rápidos
+    clickSound.currentTime = 0; 
+    clickSound.play().catch(e => {
+        // Manejo de error si el navegador bloquea la reproducción automática (silencioso en consola)
+        // console.error("No se pudo reproducir el sonido:", e);
+    });
+};
+
+
+// ==================================================================
+// --- 2. FUNCIONES DE UTILIDAD (Incluidas en el scope principal) ---
+// ==================================================================
+
+const crearSlug = (nombre) => {
+    return nombre.toLowerCase()
+        .normalize("NFD")
+        .replace(/[\u0300-\u036f]/g, "")
+        .replace(/[^a-z0-9\s-]/g, "")
+        .trim()
+        .replace(/\s+/g, "-");
+};
+
+const formatHora12H = (hora24) => {
+    const [horas, minutos] = hora24.split(':').map(Number);
+    const ampm = horas >= 12 ? 'p.m.' : 'a.m.';
+    const hora12 = horas % 12 || 12;
+    return `${hora12}:${minutos.toString().padStart(2, '0')} ${ampm}`;
+};
+
+const getEstadoEvento = (evento) => {
+    const ahora = new Date();
+    const [anio, mes, dia] = evento.fecha ? evento.fecha.split('-').map(Number) : [0,0,0]; 
+    
+    if (!evento.fecha) {
+        return { texto: "En curso", clase: "en-curso" };
+    }
+
+    const crearFechaConHora = (hora24) => {
+        const [horas, minutos] = hora24.split(':').map(Number);
+        return new Date(anio, mes - 1, dia, horas, minutos);
+    };
+
+    const fechaInicio = crearFechaConHora(evento.hora_inicio);
+    const fechaFin = crearFechaConHora(evento.hora_fin);
+    
+    if (ahora > fechaFin) {
+        return { texto: "Finalizado", clase: "finalizado" };
+    } else if (ahora >= fechaInicio && ahora <= fechaFin) {
+        return { texto: "En curso", clase: "en-curso" };
+    } else {
+        return { texto: "Próximamente", clase: "proximamente" };
+    }
+};
+
+const aplicarImagenesDeFondo = () => {
+    const placeholders = document.querySelectorAll('.img-placeholder[data-imagen-url]');
+    placeholders.forEach(placeholder => {
+        const imageUrl = placeholder.getAttribute('data-imagen-url');
+        if (imageUrl) {
+            placeholder.style.backgroundImage = `url('${imageUrl}')`;
+            placeholder.style.backgroundSize = 'cover';
+            placeholder.style.backgroundPosition = 'center';
+        }
+    });
+};
+
+
+// ==================================================================
+// --- 3. INICIO PRINCIPAL DEL SCRIPT ---
+// ==================================================================
+
 document.addEventListener("DOMContentLoaded", () => {
+    
+    // --- Asignar sonido a enlaces de la navegación y botones fijos ---
+    
+    // Enlaces de Navegación (Header)
+    document.querySelectorAll('.nav-links a, .btn-primary').forEach(link => {
+        link.addEventListener('click', playClickSound);
+    });
+
+    // Barra Social (Iconos)
+    document.querySelectorAll('.social-icon').forEach(icon => {
+        icon.addEventListener('click', playClickSound);
+    });
+    
+    // Botón de Comentario
+    document.getElementById('btn-agregar')?.addEventListener('click', playClickSound);
+
+
+    // --- Carga y Renderizado de Eventos ---
+
     fetch("eventos.json")
         .then(response => {
             if (!response.ok) {
@@ -8,67 +108,6 @@ document.addEventListener("DOMContentLoaded", () => {
         })
         .then(data => {
             
-            // --- Funciones de Utilidad ---
-            // Las funciones crearSlug, getEstadoEvento, formatHora12H y aplicarImagenesDeFondo
-            // se mantienen iguales a las que ya tenías y se omiten aquí por brevedad,
-            // pero deben estar en tu archivo .js final.
-            
-            const crearSlug = (nombre) => {
-                return nombre.toLowerCase()
-                    .normalize("NFD")
-                    .replace(/[\u0300-\u036f]/g, "")
-                    .replace(/[^a-z0-9\s-]/g, "")
-                    .trim()
-                    .replace(/\s+/g, "-");
-            };
-
-            const formatHora12H = (hora24) => {
-                const [horas, minutos] = hora24.split(':').map(Number);
-                const ampm = horas >= 12 ? 'p.m.' : 'a.m.';
-                const hora12 = horas % 12 || 12;
-                return `${hora12}:${minutos.toString().padStart(2, '0')} ${ampm}`;
-            };
-
-            const getEstadoEvento = (evento) => {
-                 const ahora = new Date();
-                 const [anio, mes, dia] = evento.fecha ? evento.fecha.split('-').map(Number) : [0,0,0]; 
-                 
-                 if (!evento.fecha) {
-                     return { texto: "En curso", clase: "en-curso" };
-                 }
-
-                 const crearFechaConHora = (hora24) => {
-                     const [horas, minutos] = hora24.split(':').map(Number);
-                     return new Date(anio, mes - 1, dia, horas, minutos);
-                 };
-
-                 const fechaInicio = crearFechaConHora(evento.hora_inicio);
-                 const fechaFin = crearFechaConHora(evento.hora_fin);
-                 
-                 if (ahora > fechaFin) {
-                     return { texto: "Finalizado", clase: "finalizado" };
-                 } else if (ahora >= fechaInicio && ahora <= fechaFin) {
-                     return { texto: "En curso", clase: "en-curso" };
-                 } else {
-                     return { texto: "Próximamente", clase: "proximamente" };
-                 }
-             };
-            
-             const aplicarImagenesDeFondo = () => {
-                 const placeholders = document.querySelectorAll('.img-placeholder[data-imagen-url]');
-                 placeholders.forEach(placeholder => {
-                     const imageUrl = placeholder.getAttribute('data-imagen-url');
-                     if (imageUrl) {
-                         placeholder.style.backgroundImage = `url('${imageUrl}')`;
-                         placeholder.style.backgroundSize = 'cover';
-                         placeholder.style.backgroundPosition = 'center';
-                     }
-                 });
-             };
-
-
-            // --- Renderizado de Eventos y Talleres ---
-
             data.eventos.forEach(item => {
                 if (!item.id) {
                     item.id = crearSlug(item.nombre);
@@ -85,7 +124,6 @@ document.addEventListener("DOMContentLoaded", () => {
             eventos.forEach(evento => {
                 const card = document.createElement("article");
                 card.classList.add("card");
-                // **CLAVE DE FILTRADO**
                 card.setAttribute('data-tipo', evento.tipo); 
                 
                 const url = `evento-detalle.html?id=${evento.id}`;
@@ -113,7 +151,6 @@ document.addEventListener("DOMContentLoaded", () => {
             talleres.forEach(taller => {
                 const story = document.createElement("article");
                 story.classList.add("story");
-                // **CLAVE DE FILTRADO**
                 story.setAttribute('data-tipo', taller.tipo);
 
                 const url = `evento-detalle.html?id=${taller.id}`; 
@@ -134,6 +171,13 @@ document.addEventListener("DOMContentLoaded", () => {
             });
             
             aplicarImagenesDeFondo();
+
+            // --- Asignar sonido a las tarjetas después de que se han renderizado ---
+            
+            // Tarjetas de Eventos y Talleres (los enlaces dentro de .card y .story)
+            document.querySelectorAll('.card a, .story a').forEach(link => {
+                link.addEventListener('click', playClickSound);
+            });
             
             // ------------------------------------------------------------------
             // --- IMPLEMENTACIÓN LÓGICA DE FILTRADO ---
@@ -156,33 +200,31 @@ document.addEventListener("DOMContentLoaded", () => {
             filtroSelect.addEventListener('change', (e) => {
                 const tipoSeleccionado = e.target.value; 
                 
-                // Selecciona todos los elementos en ambas secciones (eventos y talleres)
                 const todosLosElementos = document.querySelectorAll('[data-tipo]'); 
 
                 todosLosElementos.forEach(elemento => {
                     const tipoElemento = elemento.getAttribute('data-tipo');
                     
                     if (tipoSeleccionado === 'todos' || tipoElemento === tipoSeleccionado) {
-                        // Mostrar: si es 'todos' o el tipo coincide
                         elemento.style.display = ''; 
                     } else {
-                        // Ocultar
                         elemento.style.display = 'none'; 
                     }
                 });
             });
 
             // --- Reemplazo de botones por enlaces ---
-            // (Esta sección la mantengo intacta)
-
+            
             const btnExplorarTodos = document.querySelector("#objetivo-principal .btn-secondary");
-            if(btnExplorarTodos && btnExplorarTodos.tagName === 'BUTTON') { // Aseguramos que solo reemplace si es un botón
+            if(btnExplorarTodos && btnExplorarTodos.tagName === 'BUTTON') { 
                 const linkExplorarTodos = document.createElement('a');
                 linkExplorarTodos.href = "todos-los-eventos.html";
                 linkExplorarTodos.target = "_blank";
                 linkExplorarTodos.className = btnExplorarTodos.className;
                 linkExplorarTodos.textContent = btnExplorarTodos.textContent;
                 btnExplorarTodos.replaceWith(linkExplorarTodos);
+                // Asignar sonido al nuevo enlace
+                linkExplorarTodos.addEventListener('click', playClickSound);
             }
 
             const btnVerMas = document.querySelector(".content-sidebar .btn-secondary");
@@ -193,6 +235,8 @@ document.addEventListener("DOMContentLoaded", () => {
                 linkVerMas.className = btnVerMas.className;
                 linkVerMas.textContent = btnVerMas.textContent;
                 btnVerMas.replaceWith(linkVerMas);
+                // Asignar sonido al nuevo enlace
+                linkVerMas.addEventListener('click', playClickSound);
             }
         })
         .catch((error) => {

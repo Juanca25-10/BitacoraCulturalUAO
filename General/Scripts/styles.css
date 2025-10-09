@@ -276,6 +276,21 @@ nav {
     padding: 1rem;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    
+    /* === NUEVO: Posición relativa para habilitar z-index === */
+    position: relative; 
+    
+    /* Transición para animación */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    /* Mantenemos el efecto de levantamiento */
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2); 
+    
+    /* === CORRECCIÓN CLAVE: Esto asegura que la tarjeta levantada se muestre encima === */
+    z-index: 10; 
 }
 
 /* ESTILO DE TALLERES (GRID ADAPTABLE dentro de la columna) */
@@ -287,10 +302,20 @@ nav {
 }
 
 .story {
+    /* ... código existente ... */
     background: #f7f1e7;
     padding: 1rem; 
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    
+    /* === NUEVO: Transición para animación === */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.story:hover {
+    /* === NUEVO: Efecto de levantamiento y sombra más profunda === */
+    transform: translateY(-5px); 
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2);
 }
 
 .story h3 {
@@ -721,5 +746,45 @@ footer {
   background-position: center;
   background-repeat: no-repeat;
   margin-right: 10px;
+}
+
+/* 1. Definir la animación (Desde abajo y transparente hasta su posición normal) */
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 2. Aplicar la animación a las secciones de contenido */
+.content-slider,
+.intermedia,
+.content-sidebar,
+.testimonios {
+    /* Asegura que los elementos inicien transparentes */
+    opacity: 0;
+    /* Aplica la animación */
+    animation: fadeInSlideUp 0.8s ease-out forwards;
+}
+
+/* 3. Retrasos (para que carguen una después de otra) */
+.content-slider {
+    animation-delay: 0.2s;
+}
+
+.intermedia {
+    animation-delay: 0.4s;
+}
+
+.content-sidebar {
+    animation-delay: 0.6s;
+}
+
+.testimonios {
+    animation-delay: 0.8s;
 }
 

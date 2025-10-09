@@ -253,11 +253,13 @@ article p {
     font-weight: 600;
     font-size: 1rem;
     margin-top: 20px;
-    transition: background-color 0.3s ease;
+   
+    transition: background-color 0.3s ease, transform 0.2s ease;
 }
 
 .btn-primary-lateral:hover {
     background-color: #a31d34;
+    transform: scale(1.02);
 }
 
 
@@ -449,4 +451,22 @@ footer {
     .titulo-sobre-imagen {
         font-size: 2rem !important; /* Reducimos el título en móvil */
     }
+}
+
+@keyframes fadeInSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* 2. Aplicar la animación al contenido */
+.contenido-panel-grid {
+    opacity: 0; /* Inicia invisible */
+    animation: fadeInSlideUp 0.7s ease-out forwards;
+    animation-delay: 0.3s; /* Un ligero retraso después de que carga la página */
 }

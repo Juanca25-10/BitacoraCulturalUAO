@@ -56,6 +56,20 @@ const getEstadoEvento = (evento) => {
 // === LÓGICA PRINCIPAL (DOM Content Loaded) ================
 // =========================================================
 
+const clickSound = new Audio('../../General/Recursos/sonidos/button-press-382713.mp3');
+
+// Función para reproducir el sonido
+const playClickSound = () => {
+    // Para que el sonido se pueda reproducir aunque esté sonando (para clics rápidos)
+    clickSound.currentTime = 0; 
+    clickSound.play().catch(e => {
+        // Esto es útil para manejar errores de permisos en algunos navegadores 
+        // (por ejemplo, Chrome no permite autoplay sin interacción previa)
+        console.error("No se pudo reproducir el sonido:", e);
+    });
+};
+
+
 document.addEventListener('DOMContentLoaded', () => {
     
     const params = new URLSearchParams(window.location.search);
