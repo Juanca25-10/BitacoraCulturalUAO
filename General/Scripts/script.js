@@ -8,17 +8,15 @@ const clickSound = new Audio('../../General/Recursos/sonidos/button-press-382713
 
 // Función para reproducir el sonido
 const playClickSound = () => {
-    // Reinicia el tiempo para permitir que se reproduzca en clics rápidos
     clickSound.currentTime = 0; 
     clickSound.play().catch(e => {
-        // Manejo de error si el navegador bloquea la reproducción automática (silencioso en consola)
-        // console.error("No se pudo reproducir el sonido:", e);
+        // Silencia errores si el navegador bloquea la reproducción automática
     });
 };
 
 
 // ==================================================================
-// --- 2. FUNCIONES DE UTILIDAD (Incluidas en el scope principal) ---
+// --- 2. FUNCIONES DE UTILIDAD ---
 // ==================================================================
 
 const crearSlug = (nombre) => {
@@ -39,8 +37,8 @@ const formatHora12H = (hora24) => {
 
 const getEstadoEvento = (evento) => {
     const ahora = new Date();
-    const [anio, mes, dia] = evento.fecha ? evento.fecha.split('-').map(Number) : [0,0,0]; 
-    
+    const [anio, mes, dia] = evento.fecha ? evento.fecha.split('-').map(Number) : [0, 0, 0]; 
+
     if (!evento.fecha) {
         return { texto: "En curso", clase: "en-curso" };
     }
@@ -52,7 +50,7 @@ const getEstadoEvento = (evento) => {
 
     const fechaInicio = crearFechaConHora(evento.hora_inicio);
     const fechaFin = crearFechaConHora(evento.hora_fin);
-    
+
     if (ahora > fechaFin) {
         return { texto: "Finalizado", clase: "finalizado" };
     } else if (ahora >= fechaInicio && ahora <= fechaFin) {
@@ -80,25 +78,20 @@ const aplicarImagenesDeFondo = () => {
 // ==================================================================
 
 document.addEventListener("DOMContentLoaded", () => {
-    
-    // --- Asignar sonido a enlaces de la navegación y botones fijos ---
-    
-    // Enlaces de Navegación (Header)
+
+    // --- Asignar sonido a enlaces del header, redes y botones ---
     document.querySelectorAll('.nav-links a, .btn-primary').forEach(link => {
         link.addEventListener('click', playClickSound);
     });
 
-    // Barra Social (Iconos)
     document.querySelectorAll('.social-icon').forEach(icon => {
         icon.addEventListener('click', playClickSound);
     });
-    
-    // Botón de Comentario
+
     document.getElementById('btn-agregar')?.addEventListener('click', playClickSound);
 
 
-    // --- Carga y Renderizado de Eventos ---
-
+    // --- CARGA Y RENDERIZADO DE EVENTOS ---
     fetch("eventos.json")
         .then(response => {
             if (!response.ok) {
@@ -107,7 +100,6 @@ document.addEventListener("DOMContentLoaded", () => {
             return response.json();
         })
         .then(data => {
-            
             data.eventos.forEach(item => {
                 if (!item.id) {
                     item.id = crearSlug(item.nombre);
@@ -120,12 +112,12 @@ document.addEventListener("DOMContentLoaded", () => {
             const eventosContainer = document.getElementById("eventos-container");
             const talleresContainer = document.getElementById("talleres-container");
 
-            // Función de renderizado para eventos (cards)
+            // --- Renderizado de eventos (cards) ---
             eventos.forEach(evento => {
                 const card = document.createElement("article");
                 card.classList.add("card");
-                card.setAttribute('data-tipo', evento.tipo); 
-                
+                card.setAttribute('data-tipo', evento.tipo);
+
                 const url = `evento-detalle.html?id=${evento.id}`;
                 const horaDisplay = `${formatHora12H(evento.hora_inicio)} - ${formatHora12H(evento.hora_fin)}`;
                 const fechaDisplay = evento.fecha.split('-').reverse().join('-');
@@ -138,22 +130,19 @@ document.addEventListener("DOMContentLoaded", () => {
                         </div>
                         <h3>${evento.nombre}</h3>
                         <p class="tipo-tag">${evento.tipo}</p>
-                        <p>
-                            ${fechaDisplay} · ${horaDisplay} ·
-                            <br>${evento.lugar}
-                        </p>
+                        <p>${fechaDisplay} · ${horaDisplay} <br>${evento.lugar}</p>
                     </a>
                 `;
                 eventosContainer.appendChild(card);
             });
 
-            // Función de renderizado para talleres (stories/aside)
+            // --- Renderizado de talleres (aside/stories) ---
             talleres.forEach(taller => {
                 const story = document.createElement("article");
                 story.classList.add("story");
                 story.setAttribute('data-tipo', taller.tipo);
 
-                const url = `evento-detalle.html?id=${taller.id}`; 
+                const url = `evento-detalle.html?id=${taller.id}`;
                 const horaDisplay = `${formatHora12H(taller.hora_inicio)} - ${formatHora12H(taller.hora_fin)}`;
 
                 story.innerHTML = `
@@ -161,33 +150,22 @@ document.addEventListener("DOMContentLoaded", () => {
                         <div class="img-placeholder" data-imagen-url="${taller.imagen_path}"></div>
                         <h3>${taller.nombre}</h3>
                         <p class="tipo-tag">${taller.tipo}</p>
-                        <p>
-                            ${taller.dia} · ${horaDisplay} ·
-                            <br>${taller.lugar}
-                        </p>
+                        <p>${taller.dia} · ${horaDisplay} <br>${taller.lugar}</p>
                     </a>
                 `;
                 talleresContainer.appendChild(story);
             });
-            
+
             aplicarImagenesDeFondo();
 
-            // --- Asignar sonido a las tarjetas después de que se han renderizado ---
-            
-            // Tarjetas de Eventos y Talleres (los enlaces dentro de .card y .story)
+            // --- Sonido a las tarjetas ---
             document.querySelectorAll('.card a, .story a').forEach(link => {
                 link.addEventListener('click', playClickSound);
             });
-            
-            // ------------------------------------------------------------------
-            // --- IMPLEMENTACIÓN LÓGICA DE FILTRADO ---
-            // ------------------------------------------------------------------
-            
+
+            // --- FILTRADO POR TIPO ---
             const filtroSelect = document.getElementById('filtro-tipo');
-            
-            // 1. Obtener y llenar el menú desplegable con tipos únicos
-            const todosLosTipos = data.eventos.map(e => e.tipo);
-            const tiposUnicos = [...new Set(todosLosTipos)].sort();
+            const tiposUnicos = [...new Set(data.eventos.map(e => e.tipo))].sort();
 
             tiposUnicos.forEach(tipo => {
                 const option = document.createElement('option');
@@ -196,50 +174,72 @@ document.addEventListener("DOMContentLoaded", () => {
                 filtroSelect.appendChild(option);
             });
 
-            // 2. Escuchar el cambio en el menú de filtrado
             filtroSelect.addEventListener('change', (e) => {
-                const tipoSeleccionado = e.target.value; 
-                
-                const todosLosElementos = document.querySelectorAll('[data-tipo]'); 
-
-                todosLosElementos.forEach(elemento => {
+                const tipoSeleccionado = e.target.value;
+                document.querySelectorAll('[data-tipo]').forEach(elemento => {
                     const tipoElemento = elemento.getAttribute('data-tipo');
-                    
-                    if (tipoSeleccionado === 'todos' || tipoElemento === tipoSeleccionado) {
-                        elemento.style.display = ''; 
-                    } else {
-                        elemento.style.display = 'none'; 
-                    }
+                    elemento.style.display = (tipoSeleccionado === 'todos' || tipoElemento === tipoSeleccionado)
+                        ? '' : 'none';
                 });
             });
 
             // --- Reemplazo de botones por enlaces ---
-            
             const btnExplorarTodos = document.querySelector("#objetivo-principal .btn-secondary");
-            if(btnExplorarTodos && btnExplorarTodos.tagName === 'BUTTON') { 
+            if (btnExplorarTodos && btnExplorarTodos.tagName === 'BUTTON') {
                 const linkExplorarTodos = document.createElement('a');
                 linkExplorarTodos.href = "todos-los-eventos.html";
                 linkExplorarTodos.target = "_blank";
                 linkExplorarTodos.className = btnExplorarTodos.className;
                 linkExplorarTodos.textContent = btnExplorarTodos.textContent;
                 btnExplorarTodos.replaceWith(linkExplorarTodos);
-                // Asignar sonido al nuevo enlace
                 linkExplorarTodos.addEventListener('click', playClickSound);
             }
 
             const btnVerMas = document.querySelector(".content-sidebar .btn-secondary");
-            if(btnVerMas && btnVerMas.tagName === 'BUTTON') {
+            if (btnVerMas && btnVerMas.tagName === 'BUTTON') {
                 const linkVerMas = document.createElement('a');
                 linkVerMas.href = "todos-los-talleres.html";
                 linkVerMas.target = "_blank";
                 linkVerMas.className = btnVerMas.className;
                 linkVerMas.textContent = btnVerMas.textContent;
                 btnVerMas.replaceWith(linkVerMas);
-                // Asignar sonido al nuevo enlace
                 linkVerMas.addEventListener('click', playClickSound);
             }
         })
         .catch((error) => {
             console.error("Error al cargar y procesar eventos.json:", error);
         });
-});
+
+
+    // ================================================================
+    // --- FUNCIÓN DE EXPANDIR / COLAPSAR SLIDER ---
+    // ================================================================
+    const explorarBtn = document.querySelector("#explorarBtn");
+    const slider = document.getElementById("eventos-container");
+
+    if (explorarBtn && slider) {
+        let expandido = false;
+
+        explorarBtn.addEventListener("click", () => {
+            playClickSound();
+            expandido = !expandido;
+
+            if (expandido) {
+                slider.classList.remove("slider-original");
+                slider.classList.add("slider-expandido");
+                explorarBtn.textContent = "Volver al slider";
+                explorarBtn.style.backgroundColor = "#df2531";
+                explorarBtn.style.color = "white";
+                slider.style.transition = "all 0.6s ease";
+            } else {
+                slider.classList.remove("slider-expandido");
+                slider.classList.add("slider-original");
+                explorarBtn.textContent = "Explorar todos";
+                explorarBtn.style.backgroundColor = "transparent";
+                explorarBtn.style.color = "#df2531";
+                slider.style.transition = "all 0.6s ease";
+            }
+        });
+    }
+
+}); 

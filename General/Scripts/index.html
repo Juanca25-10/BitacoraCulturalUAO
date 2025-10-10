@@ -14,246 +14,213 @@
 <body>
     <header>
         <nav class="container">
-    <img src="../../General/Recursos/imagenes/logoUAO_WebSite.png" alt="Logo Eventos UAO" class="logo-img">
-    <ul class="nav-links">
-        <li><a href="#objetivo-principal">Próximos eventos</a></li>
+            <img src="../../General/Recursos/imagenes/logoUAO_WebSite.png" alt="Logo Eventos UAO" class="logo-img">
+            <ul class="nav-links">
+                <li><a href="#objetivo-principal">Próximos eventos</a></li>
                 <li><a href="#objetivos-secundarios">Talleres</a></li>
                 <li><a href="#actividades">Testimonios</a></li>
-    </ul>
-    <a href="https://campus.uaovirtual.edu.co/login/index.php" class="btn-primary">Ingresar Portal</a>
-</nav>
+            </ul>
+            <a href="https://campus.uaovirtual.edu.co/login/index.php" class="btn-primary">Ingresar Portal</a>
+        </nav>
     </header>
 
-    
-
     <section class="hero hero-image">
-    <div class="container hero-content">
-        <div class="hero-text">
-            <img src="../../General/Recursos/imagenes/ArcoUAO_WebSite.png" alt="Arco UAO" class="arco-decorativo">
-            
-            <h1>Eventos culturales en la <span> uao</span></h1>
-            <p>
-                Explora las actividades académicas, artísticas y de 
-                <br>bienestar que se realizan en la Universidad Autónoma de Occidente.<br>
-            </p>
-            <a href="#objetivo-principal" class="btn-primary">Ver próximos eventos</a>
+        <div class="container hero-content">
+            <div class="hero-text">
+                <img src="../../General/Recursos/imagenes/ArcoUAO_WebSite.png" alt="Arco UAO" class="arco-decorativo">
+                <h1>Eventos culturales en la <span>uao</span></h1>
+                <p>
+                    Explora las actividades académicas, artísticas y de 
+                    <br>bienestar que se realizan en la Universidad Autónoma de Occidente.<br>
+                </p>
+                <a href="#objetivo-principal" class="btn-primary">Ver próximos eventos</a>
+            </div>
+            <div class="hero-modelo-3d">
+                <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.74/build/spline-viewer.js"></script>
+                <spline-viewer url="https://prod.spline.design/AKmjbjiTcCE5w9MO/scene.splinecode"></spline-viewer>
+            </div>
         </div>
-        
-        <div class="hero-modelo-3d">
-            <script type="module" src="https://unpkg.com/@splinetool/viewer@1.10.74/build/spline-viewer.js"></script>
-<spline-viewer url="https://prod.spline.design/AKmjbjiTcCE5w9MO/scene.splinecode"></spline-viewer>
-        </div>
-        </div>
-</section>
+    </section>
     
     <main class="main-content container">
-    
-    <section class="content-slider" id="objetivo-principal">
-    <div class="section-header">
-        <h2>Próximos eventos (Slider)</h2>
-        
-        <div class="filtro-container">
-            <label for="filtro-tipo">Filtrar por tipo:</label>
-            <select id="filtro-tipo" class="btn-secondary">
-                <option value="todos">Mostrar todos</option>
-                </select>
-        </div>
-        <button class="btn-secondary">Explorar todos</button>
-    </div>
-    <div class="cards carousel-container" id="eventos-container">
-        </div>
-    <div class="carousel-indicators">
-        </div>
-</section>
+        <section class="content-slider" id="objetivo-principal">
+            <div class="section-header">
+                <h2>Próximos eventos (Slider)</h2>
+                <div class="filtro-container">
+                    <label for="filtro-tipo">Filtrar por tipo:</label>
+                    <select id="filtro-tipo" class="btn-secondary">
+                        <option value="todos">Mostrar todos</option>
+                    </select>
+                </div>
+                <!-- 🔹 BOTÓN ACTUALIZADO CON ID -->
+                <button id="explorarBtn" class="btn-secondary">Explorar todos</button>
+            </div>
 
-    <section class="intermedia">
-        <h2>Compromiso UAO</h2>
-        <p>
-            La Universidad Autónoma de Occidente (UAO) está profundamente comprometida con el desarrollo social, cultural y ambiental de Cali y toda la región Suroccidente de Colombia. Más allá de la formación académica, nuestra misión es actuar como un motor de transformación territorial. A través de nuestros diversos eventos y talleres, buscamos fortalecer el vínculo indisoluble con la comunidad, ofreciendo espacios de crecimiento integral no solo a nuestros estudiantes, sino a la ciudadanía en general.
+            <!-- 🔹 CONTENEDOR ACTUALIZADO CON CLASE INICIAL -->
+            <div class="cards carousel-container slider-original" id="eventos-container"></div>
 
-Estas actividades están diseñadas para impulsar el pensamiento crítico, la expresión artística y la conciencia cívica y ambiental. Creemos firmemente en el poder de la cultura y la academia para generar un impacto positivo y duradero, construyendo una sociedad más equitativa, sostenible y con mayor calidad de vida para todos.
-        </p>
+            <div class="carousel-indicators"></div>
+        </section>
+
         <section class="intermedia">
-    <h3>Video: Conoce Bienestar Universitario</h3>
-    <div class="video-responsive">
-        <iframe width="560" height="315" 
-            src="https://www.youtube.com/embed/X9vSOPeZL50" 
-            title="Bienestar Universitario - Universidad Autónoma de Occidente" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-        </iframe>
-    </div>
+            <h2>Compromiso UAO</h2>
+            <p>
+                La Universidad Autónoma de Occidente (UAO) está profundamente comprometida con el desarrollo social, cultural y ambiental de Cali y toda la región Suroccidente de Colombia. Más allá de la formación académica, nuestra misión es actuar como un motor de transformación territorial. A través de nuestros diversos eventos y talleres, buscamos fortalecer el vínculo indisoluble con la comunidad, ofreciendo espacios de crecimiento integral no solo a nuestros estudiantes, sino a la ciudadanía en general.
+
+                Estas actividades están diseñadas para impulsar el pensamiento crítico, la expresión artística y la conciencia cívica y ambiental. Creemos firmemente en el poder de la cultura y la academia para generar un impacto positivo y duradero, construyendo una sociedad más equitativa, sostenible y con mayor calidad de vida para todos.
+            </p>
+            <section class="intermedia">
+                <h3>Video: Conoce Bienestar Universitario</h3>
+                <div class="video-responsive">
+                    <iframe width="560" height="315" 
+                        src="https://www.youtube.com/embed/X9vSOPeZL50" 
+                        title="Bienestar Universitario - Universidad Autónoma de Occidente" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </section>
+        </section>
+
+        <aside class="content-sidebar">
+            <div class="section-header">
+                <h2>Talleres culturales</h2>
+                <button class="btn-secondary">Ver más</button>
+            </div>
+            <div class="stories-list" id="talleres-container"></div>
+        </aside>
+    </main>
+
+    <section class="testimonios" id="actividades">
+        <div class="container">
+            <h2>Lo que dicen los estudiantes</h2>
+
+            <div class="testimonial-cards">
+                <div class="testimonial">
+                    <div class="profile">
+                        <div class="avatar"></div>
+                        <div class="info">
+                            <h3>María Angélica</h3>
+                            <p>Estudiante de Comunicación</p>
+                        </div>
+                    </div>
+                    <blockquote>
+                        "Participar en el Café UAO fue una experiencia única. Me permitió compartir mi arte con otros compañeros y conocer nuevas perspectivas."
+                    </blockquote>
+                </div>
+
+                <div class="testimonial">
+                    <div class="profile">
+                        <div class="avatar"></div>
+                        <div class="info">
+                            <h3>Daniel López</h3>
+                            <p>Estudiante de Ingeniería</p>
+                        </div>
+                    </div>
+                    <blockquote>
+                        "La orquesta de salsa me dio la oportunidad de desarrollar mi talento y al mismo tiempo hacer parte de una gran comunidad."
+                    </blockquote>
+                </div>
+
+                <div class="testimonial">
+                    <div class="profile">
+                        <div class="avatar"></div>
+                        <div class="info">
+                            <h3>Laura Gómez</h3>
+                            <p>Estudiante de Diseño</p>
+                        </div>
+                    </div>
+                    <blockquote>
+                        "Los talleres de Improvisación Teatral son la mejor forma de liberar el estrés y desarrollar la creatividad. ¡Recomendadísimo!"
+                    </blockquote>
+                </div>
+            </div> 
+
+            <div class="add-comment">
+                <button id="btn-agregar">Añadir un comentario</button>
+                <form id="form-comentario" style="display: none;">
+                    <input type="text" id="nombre" placeholder="Nombre y apellido" required>
+                    <input type="text" id="carrera" placeholder="Carrera" required>
+                    <textarea id="comentario" maxlength="200" placeholder="Escribe tu comentario (máx. 200 caracteres)" required></textarea>
+                    <button type="submit">Publicar</button>
+                </form>
+            </div>
+        </div>
     </section>
-    </section>
 
-    <aside class="content-sidebar">
-        <div class="section-header">
-            <h2>Talleres culturales</h2>
-            <button class="btn-secondary">Ver más</button>
-        </div>
-        <div class="stories-list" id="talleres-container">
-        </div>
-    </aside>
+    <script>
+        const btnAgregar = document.getElementById('btn-agregar');
+        const form = document.getElementById('form-comentario');
+        const container = document.querySelector('.testimonial-cards');
 
-</main>
+        btnAgregar.addEventListener('click', () => {
+            form.style.display = form.style.display === 'none' ? 'flex' : 'none';
+        });
 
-<section class="testimonios" id="actividades">
-  <div class="container">
-    <h2>Lo que dicen los estudiantes</h2>
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const nombre = document.getElementById('nombre').value;
+            const carrera = document.getElementById('carrera').value;
+            const comentario = document.getElementById('comentario').value;
 
-    <div class="testimonial-cards">
-      <div class="testimonial">
-        <div class="profile">
-          <div class="avatar"></div>
-          <div class="info">
-            <h3>María Angélica</h3>
-            <p>Estudiante de Comunicación</p>
-          </div>
-        </div>
-        <blockquote>
-          "Participar en el Café UAO fue una experiencia única. Me permitió compartir mi arte con otros compañeros y conocer nuevas perspectivas."
-        </blockquote>
-      </div>
+            const nuevo = document.createElement('div');
+            nuevo.classList.add('testimonial');
+            nuevo.innerHTML = `
+                <div class="profile">
+                    <div class="avatar"></div>
+                    <div class="info">
+                        <h3>${nombre}</h3>
+                        <p>Estudiante de ${carrera}</p>
+                    </div>
+                </div>
+                <blockquote>"${comentario}"</blockquote>
+            `;
 
-      <div class="testimonial">
-        <div class="profile">
-          <div class="avatar"></div>
-          <div class="info">
-            <h3>Daniel López</h3>
-            <p>Estudiante de Ingeniería</p>
-          </div>
-        </div>
-        <blockquote>
-          "La orquesta de salsa me dio la oportunidad de desarrollar mi talento y al mismo tiempo hacer parte de una gran comunidad."
-        </blockquote>
-      </div>
+            const nuevoAvatar = nuevo.querySelector('.avatar');
+            const randomColor = `hsl(${Math.floor(Math.random() * 360)}, 60%, 75%)`;
+            nuevoAvatar.style.backgroundColor = randomColor;
 
-      <div class="testimonial">
-        <div class="profile">
-          <div class="avatar"></div>
-          <div class="info">
-            <h3>Laura Gómez</h3>
-            <p>Estudiante de Diseño</p>
-          </div>
-        </div>
-        <blockquote>
-          "Los talleres de Improvisación Teatral son la mejor forma de liberar el estrés y desarrollar la creatividad. ¡Recomendadísimo!"
-        </blockquote>
-      </div>
-    </div> 
-
-    
-    <div class="add-comment">
-      <button id="btn-agregar">Añadir un comentario</button>
-
-      <form id="form-comentario" style="display: none;">
-        <input type="text" id="nombre" placeholder="Nombre y apellido" required>
-        <input type="text" id="carrera" placeholder="Carrera" required>
-        <textarea id="comentario" maxlength="200" placeholder="Escribe tu comentario (máx. 200 caracteres)" required></textarea>
-        <button type="submit">Publicar</button>
-      </form>
-    </div>
-    
-
-  </div>
-</section>
-
-
-
-<script>
-  const btnAgregar = document.getElementById('btn-agregar');
-  const form = document.getElementById('form-comentario');
-  const container = document.querySelector('.testimonial-cards');
-
-  btnAgregar.addEventListener('click', () => {
-    form.style.display = form.style.display === 'none' ? 'flex' : 'none';
-  });
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-
-    const nombre = document.getElementById('nombre').value;
-    const carrera = document.getElementById('carrera').value;
-    const comentario = document.getElementById('comentario').value;
-
-    const nuevo = document.createElement('div');
-    nuevo.classList.add('testimonial');
-    nuevo.innerHTML = `
-      <div class="profile">
-        <div class="avatar"></div>
-        <div class="info">
-          <h3>${nombre}</h3>
-          <p>Estudiante de ${carrera}</p>
-        </div>
-      </div>
-      <blockquote>"${comentario}"</blockquote>
-    `;
-
-    // 🎨 Asignar color aleatorio al nuevo avatar
-    const nuevoAvatar = nuevo.querySelector('.avatar');
-    const randomColor = `hsl(${Math.floor(Math.random() * 360)}, 60%, 75%)`;
-    nuevoAvatar.style.backgroundColor = randomColor;
-
-    container.appendChild(nuevo);
-
-    form.reset();
-    form.style.display = 'none';
-  });
-</script>
-
+            container.appendChild(nuevo);
+            form.reset();
+            form.style.display = 'none';
+        });
+    </script>
 
     <footer>
-    <div class="footer-contact-blocks">
-        <div>
-            <i class="fi fi-sr-phone-call"></i>
-            <p>PBX: (602) 318 8000</p>
+        <div class="footer-contact-blocks">
+            <div><i class="fi fi-sr-phone-call"></i><p>PBX: (602) 318 8000</p></div>
+            <div><i class="fi fi-sr-envelope"></i><p>buzon@uao.edu.co</p></div>
+            <div><i class="fi fi-sr-marker"></i><p>Calle 25 #115-85 Km 2 Vía Cali - Jamundí</p></div>
+            <div><i class="fi fi-sr-checkbox"></i><p>Nit: 890.312.016-3 | Vigilada Mineducación</p></div>
         </div>
-        <div>
-            <i class="fi fi-sr-envelope"></i>
-            <p>buzon@uao.edu.co</p>
+
+        <div class="container container-footer">
+            <div class="footer-info">
+                <img src="../../General/Recursos/imagenes/logoUAO_WebSite.png" alt="Logo UAO" class="logo-img" style="height: 125px;"> 
+                <p style="margin-top: 10px;">© 2025 Universidad Autónoma de Occidente</p>
+            </div>
+
+            <div class="footer-links">
+                <a href="#">Mapa del sitio</a>
+                <a href="#">Términos y condiciones</a>
+                <a href="#">Protección de datos</a>
+                <a href="#">Política de tratamiento</a>
+                <a href="#">Valores de Matrícula</a>
+                <a href="#">Derechos Pecuniarios</a>
+            </div>
         </div>
-        <div>
-            <i class="fi fi-sr-marker"></i>
-            <p>Calle 25 #115-85 Km 2 Vía Cali - Jamundí</p>
-        </div>
-        <div>
-            <i class="fi fi-sr-checkbox"></i> 
-            <p>Nit: 890.312.016-3 | Vigilada Mineducación</p>
-        </div>
-    </div>
-    
-    <div class="container container-footer">
-        <div class="footer-info">
-            <img src="../../General/Recursos/imagenes/logoUAO_WebSite.png" alt="Logo UAO" class="logo-img" style="height: 125px;"> 
-            <p style="margin-top: 10px;">© 2025 Universidad Autónoma de Occidente</p>
-        </div>
-        
-        <div class="footer-links">
-            <a href="#">Mapa del sitio</a>
-            <a href="#">Términos y condiciones</a>
-            <a href="#">Protección de datos</a>
-            <a href="#">Política de tratamiento</a>
-            <a href="#">Valores de Matrícula</a>
-            <a href="#">Derechos Pecuniarios</a>
-        </div>
-    </div>
-</footer>
+    </footer>
 
     <script src="script.js"></script>
 
     <div class="social-bar">
-    <a href="https://www.instagram.com/universidadautonomadeoccidente/" target="_blank" class="social-icon instagram">
-        <i class="fab fa-instagram"></i>
-    </a>
-    <a href="https://www.youtube.com/@universidadautonomadeoccidente" target="_blank" class="social-icon youtube">
-        <i class="fab fa-youtube"></i>
-    </a>
-    <a href="https://www.linkedin.com/school/universidadautonomadeoccidente/posts/?feedView=all" target="_blank" class="social-icon linkedin">
-        <i class="fab fa-linkedin-in"></i>
-    </a>
-</div>
- <script>
+        <a href="https://www.instagram.com/universidadautonomadeoccidente/" target="_blank" class="social-icon instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.youtube.com/@universidadautonomadeoccidente" target="_blank" class="social-icon youtube"><i class="fab fa-youtube"></i></a>
+        <a href="https://www.linkedin.com/school/universidadautonomadeoccidente/posts/?feedView=all" target="_blank" class="social-icon linkedin"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+
+    <script>
         const avatars = document.querySelectorAll('.avatar');
         avatars.forEach(avatar => {
             const randomColor = `hsl(${Math.floor(Math.random() * 360)}, 60%, 75%)`;

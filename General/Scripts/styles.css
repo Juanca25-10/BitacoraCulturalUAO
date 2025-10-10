@@ -787,4 +787,34 @@ footer {
 .testimonios {
     animation-delay: 0.8s;
 }
+/* SLIDER ORIGINAL  */
+
+
+#eventos-container.slider-original {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  transition: all 0.5s ease;
+}
+
+#eventos-container.slider-expandido {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  overflow: hidden;
+  animation: aparecer 0.8s ease forwards;
+}
+
+/* Animación de entrada */
+@keyframes aparecer {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 

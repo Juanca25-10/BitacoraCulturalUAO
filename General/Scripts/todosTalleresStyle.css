@@ -1,0 +1,311 @@
+/* ==================================== */ 
+/* ESTILOS UNIFICADOS UAO + TODOS LOS TALLERES */
+/* ==================================== */
+
+/* BASE */
+body {
+    font-family: "Poppins", sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    background-color: #efdfc5;
+    color: #333333;
+    overflow-x: hidden;
+}
+
+/* ENCABEZADO (UAO) */
+header {
+    background-color: #df2531;
+    padding: 1rem 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    color: white;
+    transition: top 0.4s ease;
+}
+
+.container-nav {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo a {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #efdfc5;
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 70px;
+    width: auto;
+    display: block;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: #efdfc5;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.menu li a:hover {
+    color: #ffce00;
+}
+/* SECCIÓN DE TALLERES */
+.talleres-listado {
+    padding: 70px 20px;
+    background-color: #efdfc5;
+    text-align: center;
+    animation: fadeInContainer 0.8s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInContainer {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.talleres-listado h1 {
+    font-size: 2.3rem;
+    color: #df2531;
+    margin-bottom: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.talleres-listado .intro-text {
+    max-width: 700px;
+    margin: 0 auto 45px;
+    font-size: 1.05rem;
+    color: #444;
+    line-height: 1.5;
+}
+
+.botones-superiores {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.btn-uao {
+    background-color: #df2531;
+    color: #efdfc5;
+    padding: 10px 25px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.btn-uao:hover {
+    background-color: #efdfc5;
+    color: #df2531;
+    border: 2px solid #df2531;
+}
+
+.talleres-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 35px;
+    justify-items: center;
+}
+
+/* TARJETA INDIVIDUAL */
+.taller-card {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    max-width: 360px;
+    text-align: left;
+    transform: translateY(20px);
+    opacity: 0;
+    animation: fadeInCard 0.8s ease-out forwards;
+}
+
+@keyframes fadeInCard {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.taller-card:nth-child(1) { animation-delay: 0.2s; }
+.taller-card:nth-child(2) { animation-delay: 0.35s; }
+.taller-card:nth-child(3) { animation-delay: 0.5s; }
+.taller-card:nth-child(4) { animation-delay: 0.65s; }
+.taller-card:nth-child(5) { animation-delay: 0.8s; }
+.taller-card:nth-child(6) { animation-delay: 0.95s; }
+
+.taller-card:hover {
+    transform: translateY(-8px);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.taller-card .img-placeholder {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.3s ease;
+}
+
+.taller-card:hover .img-placeholder {
+    transform: scale(1.05);
+}
+
+/* INFORMACIÓN */
+.taller-info {
+    padding: 18px 20px 25px;
+}
+
+.taller-info a,
+.taller-info a:visited,
+.taller-info a:active {
+    color: inherit !important;
+    text-decoration: none !important;
+    border: none !important;
+    outline: none !important;
+}
+
+.taller-info a:hover {
+    text-decoration: none !important;
+    border: none !important;
+}
+
+.taller-info h3 {
+    color: #df2531;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.taller-info p {
+    color: #333;
+    font-size: 0.95rem;
+    margin: 4px 0;
+    line-height: 1.4;
+}
+
+/* ETIQUETA DE TIPO */
+.tipo-tag {
+    display: inline-block;
+    background-color: #f9e4cc;
+    color: #df2531;
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 12px;
+    margin-bottom: 6px;
+}
+
+footer {
+    background: #df2531;
+    color: #efdfc5;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    transition: transform 0.4s ease;
+    z-index: 90;
+}
+
+footer.oculto {
+    transform: translateY(100%);
+}
+
+.footer-contact-blocks {
+    background: #a31d34;
+    padding: 15px 0;
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    color: #efdfc5;
+}
+
+.footer-contact-blocks i {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+    color: #efdfc5;
+}
+
+.footer-contact-blocks p {
+    margin: 0;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.container-footer {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.footer-info .logo-img {
+    height: 60px;
+    width: auto;
+    display: block;
+    margin: 0 auto 5px;
+}
+
+.footer-links a {
+    color: #efdfc5;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.85rem;
+    transition: color 0.3s ease;
+}
+.footer-links a:hover {
+    color: #ffce00;
+}
+
+/* BOTÓN “INGRESAR” CON MARCO ELEGANTE */
+.footer-links .btn-ingresar {
+    border: 2px solid #fff;
+    padding: 6px 14px;
+    border-radius: 6px;
+    color: #fff;
+    background: transparent;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.footer-links .btn-ingresar:hover {
+    background: #fff;
+    color: #df2531;
+}
+
+/* ==================================== */
+/* RESPONSIVO */
+/* ==================================== */
+@media (max-width: 600px) {
+    .talleres-listado h1 {
+        font-size: 1.8rem;
+    }
+    .taller-card {
+        max-width: 100%;
+    }
+}

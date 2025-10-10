@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talleres Culturales - UAO</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/2.4.0/uicons-solid-rounded/css/uicons-solid-rounded.css'>
+  <link rel="icon" type="image/png" href="../../General/Recursos/imagenes/favicon.png">
+  <link rel="stylesheet" href="todosTalleresStyle.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="container-nav">
+        <div class="logo">
+          <a href="index.html"><img src="../../General/Recursos/imagenes/logoUAO_WebSite.png" alt="Logo UAO" class="logo-img"></a>
+        </div>
+        <ul class="menu">
+          <li><a href="index.html#objetivo-principal">Próximos eventos</a></li>
+          <li><a href="index.html#talleres">Talleres</a></li>
+          <li><a href="index.html#actividades">Testimonios</a></li>
+        </ul>
+        <a href="https://campus.uaovirtual.edu.co/login/index.php" class="btn-ingresar">Ingresar</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="talleres-listado container">
+      <h1>Talleres Culturales</h1>
+      <p class="intro-text">
+        Descubre los talleres permanentes que la Universidad Autónoma de Occidente ofrece a su comunidad.
+        Aquí podrás conocer sus horarios, lugares y detalles para participar.
+      </p>
+
+      <div id="talleres-grid" class="talleres-grid">
+        <!-- Aquí se cargan los talleres dinámicamente -->
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-contact-blocks">
+      <div><i class="fi fi-sr-phone-call"></i><p>PBX: (602) 318 8000</p></div>
+      <div><i class="fi fi-sr-envelope"></i><p>buzon@uao.edu.co</p></div>
+      <div><i class="fi fi-sr-marker"></i><p>Calle 25 #115-85 Km 2 Vía Cali - Jamundí</p></div>
+      <div><i class="fi fi-sr-checkbox"></i><p>Nit: 890.312.016-3 | Vigilada Mineducación</p></div>
+    </div>
+    
+    <div class="container container-footer">
+      <div class="footer-info">
+        <img src="../../General/Recursos/imagenes/logoUAO_WebSite.png" alt="Logo UAO" class="logo-img" style="height: 125px;"> 
+        <p style="margin-top: 10px;">© 2025 Universidad Autónoma de Occidente</p>
+      </div>
+      <div class="footer-links">
+        <a href="#">Mapa del sitio</a>
+        <a href="#">Términos y condiciones</a>
+        <a href="#">Protección de datos</a>
+        <a href="#">Política de tratamiento</a>
+        <a href="#">Valores de Matrícula</a>
+        <a href="#">Derechos Pecuniarios</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch("eventos.json")
+        .then(response => response.json())
+        .then(data => {
+          const talleres = data.eventos.filter(e => e.categoria_principal === "Taller Permanente");
+          const container = document.getElementById("talleres-grid");
+
+          talleres.forEach(taller => {
+            const url = `evento-detalle.html?id=${taller.id}`;
+            const hora = `${taller.hora_inicio} - ${taller.hora_fin}`;
+            
+            const card = document.createElement("article");
+            card.classList.add("taller-card");
+            card.innerHTML = `
+              <a href="${url}">
+                <div class="img-placeholder" style="background-image:url('${taller.imagen_path}')"></div>
+                <div class="taller-info">
+                  <h3>${taller.nombre}</h3>
+                  <p class="tipo-tag">${taller.tipo}</p>
+                  <p>${taller.dia} · ${hora}<br>${taller.lugar}</p>
+                </div>
+              </a>
+            `;
+            container.appendChild(card);
+          });
+        })
+        .catch(err => console.error("Error al cargar talleres:", err));
+    });
+  </script>
+</body>
+</html>
